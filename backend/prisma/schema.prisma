@@ -9,6 +9,35 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Employee {
+  id           String       @id @default(cuid())
+  name         String
+  email        String       @unique
+  phone_number String       @unique
+  cafes        EmployeeCafe[]
+}
+
+model Cafe {
+  id           String       @id @default(cuid())
+  name         String
+  location     String
+  description  String
+  logo         String
+  employees    EmployeeCafe[]
+}
+
+model EmployeeCafe {
+  id          String   @id @default(cuid())
+  employeeId  String
+  cafeId      String
+  startDate   DateTime
+  
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  cafe        Cafe     @relation(fields: [cafeId], references: [id])
+
+  @@unique([employeeId, cafeId])
 }
