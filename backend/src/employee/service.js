@@ -1,4 +1,4 @@
-import { prisma_db } from "../utils/connect_db";
+import { prisma_db } from "../../prisma/connect_db";
 
 // service for the employee that interacts with the database and encapsulates the logic for the employee
 export default class EmployeeService {
@@ -9,18 +9,6 @@ export default class EmployeeService {
     // get all employees
     async getAllEmployees() {
         return this.prisma_db.employee.findMany();
-    }
-
-    // create a new employee
-    async createEmployee(name, email, phone_number, gender) {
-        return this.prisma_db.employee.create({
-            data: {
-                name,
-                email,
-                phone_number,
-                gender,
-            },
-        });
     }
 
     // get an employee by id
@@ -35,6 +23,20 @@ export default class EmployeeService {
         return this.prisma_db.employee.update({
             where: { id: employeeId },
             data,
+        });
+    }
+
+    // get employee by email
+    async getEmployeeByEmail(email) {
+        return this.prisma_db.employee.findUnique({
+            where: { email },
+        });
+    }
+
+    // get employee by phone number
+    async getEmployeeByPhoneNumber(phone_number) {
+        return this.prisma_db.employee.findUnique({
+            where: { phone_number },
         });
     }
 }

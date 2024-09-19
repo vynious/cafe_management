@@ -1,4 +1,4 @@
-import { prisma_db } from "../utils/connect_db";
+import { prisma_db } from "../../prisma/connect_db";
 
 export default class EmploymentService {
     constructor() {
@@ -7,12 +7,15 @@ export default class EmploymentService {
 
     // get all employees for a cafe
     // order by number of days worked desc based on startDate
-    async getEmployeesForCafe(cafeName) {
+    async getActiveEmployeesForCafe(cafeName) {
         return this.prisma_db.employment.findMany({
             where: {
                 cafe: {
                     name: cafeName,
                 },
+                // only include employees whose endDate is null
+                // active employment records
+                endDate: null,
             },
             // order by number of days worked desc based on startDate and currentDate
             orderBy: {
@@ -26,7 +29,7 @@ export default class EmploymentService {
     }
 
     // get the employment record for an employee for a cafe
-    async getEmploymentRecordForEmployeeForCafe(cafeId, employeeId) {
+    async getEmploymentRecord(cafeId, employeeId) {
         return this.prisma_db.employment.findFirst({
             where: { cafeId, employeeId },
         });
@@ -66,6 +69,14 @@ export default class EmploymentService {
             data: {
                 endDate: new Date(), // current date
             },
+        });
+    }
+
+    // update the employment record
+    async updateEmploymentRecord(employmentId, data) {
+        return this.prisma_db.employment.update({
+            where: { id: employmentId },
+            data,
         });
     }
 
