@@ -7,9 +7,13 @@ export default class EmploymentService {
 
     // get all employees for a cafe
     // order by number of days worked desc based on startDate
-    async getEmployeesForCafe(cafeId) {
+    async getEmployeesForCafe(cafeName) {
         return this.prisma_db.employment.findMany({
-            where: { cafeId },
+            where: {
+                cafe: {
+                    name: cafeName,
+                },
+            },
             // order by number of days worked desc based on startDate and currentDate
             orderBy: {
                 startDate: 'desc',

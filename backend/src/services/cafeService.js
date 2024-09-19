@@ -7,9 +7,15 @@ export default class CafeService {
         this.employmentService = new EmploymentService();
     }
 
-    // get all cafes
+    // get all cafes order by number of employees desc
     async getAllCafes() {
-        return this.prisma_db.cafe.findMany();
+        return this.prisma_db.cafe.findMany({
+            orderBy: {
+                employees: {
+                    _count: 'desc',
+                },
+            },
+        });
     }
 
     // get a cafe by id
@@ -19,10 +25,15 @@ export default class CafeService {
         });
     }
 
-    // get all cafes by location
+    // get all cafes by location order by number of employees desc
     async getCafeByLocation(location) {
         return this.prisma_db.cafe.findMany({
             where: { location },
+            orderBy: {
+                employees: {
+                    _count: 'desc',
+                },
+            },
         });
     }
 
@@ -51,10 +62,10 @@ export default class CafeService {
     // get all employees for a cafe
     // The response of this endpoint should be the below and sorted by the highest number of days
     // worked. It should list all the employees.
-    async getEmployeesForCafe(cafeId) {
+    async getEmployees(cafeName) {
         
         let parsedEmploymentRecords = [];
-        const employmentRecords = await this.employmentService.getEmployeesForCafe(cafeId);
+        const employmentRecords = await this.employmentService.getEmployeesForCafe(cafeName);
 
         // parse the employment records to get total days worked 
         const currentDate = new Date();
@@ -90,7 +101,7 @@ export default class CafeService {
     }
 
     async terminateEmployment(cafeId, employeeId) {
-        
+
         // end the employment for an employee for a cafe
         return this.employmentService.endEmployment(cafeId, employeeId);
     }

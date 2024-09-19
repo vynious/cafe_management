@@ -44,8 +44,14 @@ export default class CafeController {
     }
 
     // endpoint to get all employees for a cafe
+    // if no cafe is provided, get all 
     async getEmployeesForCafe(req, res) {
-        const employees = await this.cafeService.getEmployeesForCafe(req.params.id);
+        let employees = [];
+        if (!req.params.cafe) {
+            employees = await this.cafeService.getEmployees(req.params.cafe);
+        } else {
+            employees = await this.cafeService.getAllEmployees();
+        }
         res.json(employees);
     }
 
