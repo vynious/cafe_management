@@ -1,6 +1,6 @@
-import { prisma_db } from "../../utils/connect_db";
+import { prisma_db } from "../utils/connect_db";
 
-// interact with the database and encapsulate the logic for the cafe
+// service for the cafe that interacts with the database and encapsulates the logic for the cafe
 export default class CafeService {
     constructor() {
         this.prisma_db = prisma_db;

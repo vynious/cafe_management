@@ -18,7 +18,7 @@ model Employee {
   name         String
   email        String       @unique
   phone_number String       @unique
-  cafes        EmployeeCafe[]
+  cafes        Employment[]
 }
 
 model Cafe {
@@ -27,17 +27,16 @@ model Cafe {
   location     String
   description  String
   logo         String
-  employees    EmployeeCafe[]
+  employees    Employment[]
 }
 
-model EmployeeCafe {
+model Employment {
   id          String   @id @default(cuid())
   employeeId  String
   cafeId      String
   startDate   DateTime
-  
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  cafe        Cafe     @relation(fields: [cafeId], references: [id])
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  cafe        Cafe     @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 
   @@unique([employeeId, cafeId])
 }
