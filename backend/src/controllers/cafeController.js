@@ -7,12 +7,6 @@ export default class CafeController {
         this.cafeService = new CafeService()
     }
 
-    // endpoint to get all cafes
-    async getAllCafes(req, res) {
-        const cafes = await this.cafeService.getAllCafes();
-        res.json(cafes);
-    }
-
     // endpoint to get a cafe by id
     async getCafeById(req, res) {
         const cafe = await this.cafeService.getCafeById(req.params.id);
@@ -20,7 +14,7 @@ export default class CafeController {
     }
 
     // endpoint to get all cafes by location
-    async getCafeByLocation(req, res) {
+    async getAllCafes(req, res) {
         let cafes = [];
         if (!req.params.location) {
             // get all cafes if no location is provided
@@ -49,5 +43,21 @@ export default class CafeController {
         await this.cafeService.deleteCafe(req.params.id);
     }
 
+    // endpoint to get all employees for a cafe
+    async getEmployeesForCafe(req, res) {
+        const employees = await this.cafeService.getEmployeesForCafe(req.params.id);
+        res.json(employees);
+    }
 
+    // endpoint to register a new employee for a cafe
+    async registerEmployeeForCafe(req, res) {
+        // validate the request body
+        const { cafeId, employeeId } = req.body;
+        if (!cafeId || !employeeId) {
+            return res.status(400).json({ error: 'Cafe ID and employee ID are required' });
+        }
+        // register the employee for the cafe
+        const employement = await this.cafeService.registerEmployeeForCafe(cafeId, employeeId);
+        res.json(employement);
+    }
 }

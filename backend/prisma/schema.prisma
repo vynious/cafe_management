@@ -16,6 +16,7 @@ datasource db {
 model Employee {
   id           String       @id @default(cuid())
   name         String
+  gender       String
   email        String       @unique
   phone_number String       @unique
   cafes        Employment[]
@@ -34,7 +35,8 @@ model Employment {
   id          String   @id @default(cuid())
   employeeId  String
   cafeId      String
-  startDate   DateTime
+  startDate   DateTime @default(now())
+  endDate     DateTime?
   employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
   cafe        Cafe     @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 
