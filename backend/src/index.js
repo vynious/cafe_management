@@ -7,7 +7,7 @@ import helmet from "helmet"
 import employeeRouter from "./employee/route.js"
 import cafeRouter from "./cafe/route.js"
 import managementRouter from "./management/route.js"
-import employmentRouter from "./employment/route.js"
+import assignmentRouter from "./assignment/route.js"
 
 // load environment variables
 dotenv.config()
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 app.use("/", employeeRouter)
 app.use("/", cafeRouter)
 app.use("/", managementRouter)
-app.use("/", employmentRouter)
+app.use("/", assignmentRouter)
 
 // serve static files
 app.use('/logos', express.static('uploads/cafe_logos'), (req, res, next) => {

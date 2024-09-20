@@ -10,7 +10,6 @@ export default class CafeController {
         this.getAllCafes = this.getAllCafes.bind(this);
         this.createCafe = this.createCafe.bind(this);
         this.updateCafe = this.updateCafe.bind(this);
-        this.deleteCafe = this.deleteCafe.bind(this);
     }
 
     // Endpoint to get a cafe by id
@@ -27,8 +26,8 @@ export default class CafeController {
     // Endpoint to get all cafes by location if given a location
     async getAllCafes(req, res, next) {
         try {
-            const cafes = req.params.location
-                ? await this.cafeService.getCafeByLocation(req.params.location)
+            const cafes = req.query.location
+                ? await this.cafeService.getCafeByLocation(req.query.location)
                 : await this.cafeService.getAllCafes();
             res.json(cafes);
         } catch (error) {
@@ -56,21 +55,14 @@ export default class CafeController {
     // Endpoint to update a cafe by id
     async updateCafe(req, res, next) {
         try {
-            const updatedCafe = await this.cafeService.updateCafe(req.params.id, req.body);
+            const { cafeId, updateCafeData } = req.body
+            if (!cafeId || !updateCafeData) {
+                return res.status(400).json({ error: 'Cafe ID and updated cafe data are required' });
+            }
+            const updatedCafe = await this.cafeService.updateCafe(cafeId, updateCafeData);
             res.json(updatedCafe);
         } catch (error) {
             console.error(`Error updating cafe by id: ${req.params.id}`, error);
-            next(error);
-        }
-    }
-
-    // Endpoint to delete a cafe by id
-    async deleteCafe(req, res, next) {
-        try {
-            await this.cafeService.deleteCafe(req.params.id);
-            res.status(204).send();
-        } catch (error) {
-            console.error(`Error deleting cafe by id: ${req.params.id}`, error);
             next(error);
         }
     }

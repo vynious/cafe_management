@@ -1,64 +1,73 @@
 import ManagementService from "./service.js";
-
+import { isValidEmail, isValidPhoneNumber } from "../utils/validation.js";
 
 export default class ManagementController {
     constructor() {
         this.managementService = new ManagementService();
 
         // bind methods to the instance
-        this.getEmployees = this.getEmployees.bind(this);
-        this.createEmployeeAndEmploymentRecord = this.createEmployeeAndEmploymentRecord.bind(this);
-        this.updateEmployeeAndEmploymentRecord = this.updateEmployeeAndEmploymentRecord.bind(this);
+        this.deleteCafeAndRelatedAssociations = this.deleteCafeAndRelatedAssociations.bind(this);
+        this.addEmployeeWithAssignment = this.addEmployeeWithAssignment.bind(this);
+        this.modifyEmployeeWithAssignment = this.modifyEmployeeWithAssignment.bind(this);
     }
 
-    // get all employees for a cafe
-    async getEmployees(req, res, next) {
-        try {
-            const employees = await this.managementService.getEmployees(req.params.cafeName);
-            res.json(employees);
-        } catch (error) {
-            next(error)
-        }
-    }
 
-    // get all cafes    
-    async createEmployeeAndEmploymentRecord(req, res, next) {
+    // create a new employee with assignment
+    async addEmployeeWithAssignment(req, res, next) {
         try {
             const { cafeId, newEmployeeData } = req.body;
 
             // validation 
+            if (!cafeId) {
+                return res.status(400).json({ error: 'Required to assigned to a cafe' });
+            }
             if (!newEmployeeData || !newEmployeeData.name || !newEmployeeData.email || !newEmployeeData.phone_number || !newEmployeeData.gender) {
                 return res.status(400).json({ error: 'Complete employee data is required' });
             }
-            if (!this.employeeService.isValidEmail(newEmployeeData.email)) {
+            if (!isValidEmail(newEmployeeData.email)) {
                 return res.status(400).json({ error: 'Invalid email' });
             }
-            if (!this.employeeService.isValidPhoneNumber(newEmployeeData.phone_number)) {
+            if (!isValidPhoneNumber(newEmployeeData.phone_number)) {
                 return res.status(400).json({ error: 'Invalid phone number' });
             }
 
-            const employee = await this.managementService.createEmployeeAndEmploymentRecord(cafeId, newEmployeeData);
+            const employee = await this.managementService.createEmployeeWithAssignment(cafeId, newEmployeeData);
             res.json(employee);
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
-    async updateEmployeeAndEmploymentRecord(req, res, next) {
+    // update an existing employee with assignment
+    async modifyEmployeeWithAssignment(req, res, next) {
         try {
+            const { employeeId, updateEmployeeData } = req.body;
+
             // validation
-            const { employeeId, updatedEmployeeData } = req.body;
-            if (!employeeId || !updatedEmployeeData) {
+            if (!employeeId || !updateEmployeeData) {
                 return res.status(400).json({ error: 'Employee ID and updated employee data are required' });
             }
 
-            // update both employee and employment data
-            const updatedInfo = await this.managementService.updateEmployeeAndEmployment(employeeId, updatedEmployeeData);
-
+            const updatedInfo = await this.managementService.updateEmployeeWithAssignment(employeeId, updateEmployeeData);
+            
             res.json(updatedInfo);
+
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
+    // delete cafe and its related 
+    async deleteCafeAndRelatedAssociations(req, res, next) {
+        try {
+            const { cafeId } = req.body;
+            if (!cafeId) {
+                return res.status(400).json({ error: "Cafe ID is required" });
+            }
+            await this.managementService.deleteCafeAndRelatedAssociations(cafeId);
+            return res.status(200).json({ message: "Cafe and related associations deleted successfully" });
+        } catch (error) {
+            next(error);
+        }
+    }
 }

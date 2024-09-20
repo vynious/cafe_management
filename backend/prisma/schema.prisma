@@ -19,7 +19,7 @@ model Employee {
   gender       String
   email        String       @unique
   phone_number String       @unique
-  cafes        Employment[]
+  cafes        Assignment[]
 }
 
 model Cafe {
@@ -28,15 +28,14 @@ model Cafe {
   location     String
   description  String
   logo         String?
-  employees    Employment[]
+  employees    Assignment[]
 }
 
-model Employment {
+model Assignment {
   id          String   @id @default(uuid())
   employeeId  String
   cafeId      String
   startDate   DateTime @default(now())
-  endDate     DateTime?
   employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
   cafe        Cafe     @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 

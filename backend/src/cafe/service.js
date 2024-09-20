@@ -31,7 +31,7 @@ export default class CafeService {
     async getCafeById(cafeId) {
         try {
             return this.prisma_db.cafe.findUnique({
-                where: { cafeId },
+                where: { id: cafeId },
             });
         } catch (error) {
                 return error
@@ -42,7 +42,7 @@ export default class CafeService {
     async getCafeByLocation(location) {
         try {
             return this.prisma_db.cafe.findMany({
-                where: { location },
+                where: { location: location },
                 orderBy: {
                     employees: {
                         _count: 'desc',
@@ -78,7 +78,7 @@ export default class CafeService {
     async updateCafe(cafeId, cafeData) {
         try {
             return this.prisma_db.cafe.update({
-                where: { cafeId },
+                where: { id: cafeId },
                 data: cafeData,
             });
         } catch (error) {
@@ -87,10 +87,10 @@ export default class CafeService {
     }
 
     // delete a cafe by id
-    async deleteCafe(id) {
+    async deleteCafe(cafeId) {
         try {
             return this.prisma_db.cafe.delete({
-                where: { id },
+                where: { id: cafeId },
             });
         } catch (error) {
             return error

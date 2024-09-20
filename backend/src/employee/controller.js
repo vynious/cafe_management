@@ -11,6 +11,7 @@ export default class EmployeeController {
         this.updateEmployee = this.updateEmployee.bind(this);
     }
 
+    // !! not needed since we update through management service
     // endpoint to update employee details by id
     async updateEmployee(req, res, next) {
         try {

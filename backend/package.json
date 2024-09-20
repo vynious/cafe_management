@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --experimental-modules --es-module-specifier-resolution=node 'src/**/*.js'",
+    "test": "mocha src/**/*.js",
     "start": "nodemon src/index.js",
     "seed": "node prisma/seed_db.js"
   },
@@ -29,7 +29,6 @@
     "chai-http": "^5.0.0",
     "mocha": "^10.7.3",
     "prisma": "^5.19.1",
-    "sinon": "^19.0.2",
-    "supertest": "^7.0.0"
+    "sinon": "^19.0.2"
   }
 }

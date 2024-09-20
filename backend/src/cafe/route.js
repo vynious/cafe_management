@@ -23,10 +23,7 @@ cafeRouter.post('/cafe', handleLogoUpload, cafeController.createCafe);
 
 // SETTLED
 // route to update cafe by id
-cafeRouter.put('/:id', cafeController.updateCafe);
+cafeRouter.put('/cafe', cafeController.updateCafe);
 
-// SETTLED
-// route to delete cafe by id
-cafeRouter.delete('/:id', cafeController.deleteCafe);
 
 export default cafeRouter;
