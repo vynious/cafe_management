@@ -39,4 +39,12 @@ export default class EmployeeService {
             where: { phone_number },
         });
     }
+
+    async deleteEmployeeById(employeeId) {
+        return this.prisma_db.employee.delete({
+            where: {
+                id:  employeeId
+            }
+        })
+    }
 }

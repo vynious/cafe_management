@@ -9,6 +9,7 @@ export default class EmployeeController {
 
         // bind methods to the instance
         this.updateEmployee = this.updateEmployee.bind(this);
+        this.deleteEmployee = this.deleteEmployee.bind(this)
     }
 
     // !! not needed since we update through management service
@@ -37,6 +38,16 @@ export default class EmployeeController {
             // return the updated employee
             res.json(employee);
 
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteEmployee(req, res, next) {
+        try {
+            const { employeeId } = req.body
+            await this.employeeService.deleteEmployeeById(employeeId)
+            res.status(200).json()
         } catch (error) {
             next(error)
         }
