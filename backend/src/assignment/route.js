@@ -21,4 +21,4 @@ export default assignmentRouter;
 // assignmentRouter.get('/assignments/cafe/:cafeId', assignmentController.getEmployeesAssignedToCafe);
 
 
-assignmentRouter.get("employees", assignmentController.getEmployeesWithAssignments)
+assignmentRouter.get("/employees", assignmentController.getEmployeesWithAssignments)

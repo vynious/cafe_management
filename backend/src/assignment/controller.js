@@ -6,21 +6,14 @@ export default class AssignmentController {
         this.assignmentService = new assignmentService();
 
         // bind methods 
-        this.getAllAssignments = this.getAllAssignments.bind(this);
         this.createNewAssignment = this.createNewAssignment.bind(this);
         this.updateAssignment = this.updateAssignment.bind(this);
         this.getEmployeeAssignment = this.getEmployeeAssignment.bind(this);
         this.getEmployeesAssignedToCafe = this.getEmployeesAssignedToCafe.bind(this);
+        this.getEmployeesWithAssignments = this.getEmployeesWithAssignments.bind(this);
     }
 
-    async getAllAssignments(req, res, next) {
-        try {
-            const assignments = await this.assignmentService.getAssignments();
-            res.json(assignments);
-        } catch (error) {
-            next(error);
-        }
-    }
+
 
     async createNewAssignment(req, res, next) {
         try {
@@ -61,25 +54,24 @@ export default class AssignmentController {
     }
 
     // Retrieve employees for a specific cafe or all employees sorted by days worked
-    async getEmployeesWithAssignments(cafeName) {
+    async getEmployeesWithAssignments(req, res, next) {
         try {
             let parsedAssignments = [];
             let assignmentRecords = [];
 
-            if (cafeName) {
+            if (req.query.cafe) {
                 // get employees assigned to the specified cafe
-                assignmentRecords = await this.assignmentService.getEmployeesForCafe(cafeName);
+                assignmentRecords = await this.assignmentService.getEmployeesForCafe(req.query.cafe);
             } else {
                 // all employees 
-                assignmentRecords = await this.assignmentService.getAssignments();
+                assignmentRecords = await this.assignmentService.getAllAssignments();
             }
 
             // parse the employment records to calculate total days worked
             parsedAssignments = await this._parseAssignmentRecords(assignmentRecords);
-
+            res.json(parsedAssignments)
         } catch (error) {
-            console.error('Error fetching employees:', error);
-            return { error: 'Failed to fetch employees' };
+            next(error)
         }
     }
 

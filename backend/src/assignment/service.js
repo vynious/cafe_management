@@ -27,6 +27,10 @@ export default class assignmentService {
         });
     }
 
+    async getAllAssignments() {
+        return this.prisma_db.assignment.findMany({})
+    }
+
     // returns active employment for employee
     async getAssignmentForEmployee(employeeId) {
         return this.prisma_db.assignment.findFirst({
