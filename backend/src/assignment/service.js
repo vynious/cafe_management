@@ -28,7 +28,12 @@ export default class assignmentService {
     }
 
     async getAllAssignments() {
-        return this.prisma_db.assignment.findMany({})
+        return this.prisma_db.assignment.findMany({
+            include: {
+                employee: true,
+                cafe: true
+            }
+        })
     }
 
     // returns active employment for employee
@@ -48,8 +53,6 @@ export default class assignmentService {
     calculateDaysWorked(startDate) {
         // calculate the number of days worked
         const daysWorked = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24));
-        console.log(startDate, currentDate)
-        console.log(daysWorked)
         return daysWorked;
     }
 }
