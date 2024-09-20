@@ -1,0 +1,22 @@
+FROM node:18
+
+WORKDIR /usr/app
+
+RUN npm install -g prisma nodemon
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npx prisma generate
+
+# Create a shell script to run prisma db push, seed, and start the app
+RUN echo '#!/bin/sh' > /usr/app/docker-entrypoint.sh && \
+    echo 'npx prisma db push && node prisma/seed_db.js && npm run start' >> /usr/app/docker-entrypoint.sh && \
+    chmod +x /usr/app/docker-entrypoint.sh
+
+EXPOSE 3000
+
+CMD ["/usr/app/docker-entrypoint.sh"]
