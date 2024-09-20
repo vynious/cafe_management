@@ -17,7 +17,7 @@ export default class assignmentService {
             },
             // order by number of days worked desc based on startDate and currentDate
             orderBy: {
-                startDate: 'desc',
+                startDate: 'asc',
             },
             // include the employee data
             include: {
@@ -32,6 +32,9 @@ export default class assignmentService {
             include: {
                 employee: true,
                 cafe: true
+            },
+            orderBy: {
+                startDate: 'asc'
             }
         })
     }
@@ -40,7 +43,7 @@ export default class assignmentService {
     async getAssignmentForEmployee(employeeId) {
         return this.prisma_db.assignment.findFirst({
             where: {
-                id: employeeId,
+                employeeId: employeeId,
             },
             include: {
                 cafe: true

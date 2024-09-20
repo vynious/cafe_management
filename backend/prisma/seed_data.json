@@ -1,0 +1,246 @@
+{
+    "cafes": [
+        {
+            "name": "Brew Haven",
+            "location": "Bishan",
+            "description": "Cozy spot for artisanal coffee",
+            "logo": "brew_haven.png"
+        },
+        {
+            "name": "Java Junction",
+            "location": "Ang Mo Kio",
+            "description": "Rustic cafe with a modern twist",
+            "logo": "java_junction.png"
+        },
+        {
+            "name": "Espresso Express",
+            "location": "Hougang",
+            "description": "Quick service, premium coffee",
+            "logo": "espresso_express.png"
+        },
+        {
+            "name": "The Grind House",
+            "location": "Woodlands",
+            "description": "Industrial chic coffee bar",
+            "logo": "grind_house.png"
+        },
+        {
+            "name": "Caffeine Corner",
+            "location": "Newton",
+            "description": "Student-friendly study cafe",
+            "logo": "caffeine_corner.png"
+        },
+        {
+            "name": "Roasted Bliss",
+            "location": "Novena",
+            "description": "Specialty roasts and pastries",
+            "logo": "roasted_bliss.png"
+        },
+        {
+            "name": "Latte Lounge",
+            "location": "Bishan",
+            "description": "Upscale coffee experience",
+            "logo": "latte_lounge.png"
+        },
+        {
+            "name": "Bean Scene",
+            "location": "Ang Mo Kio",
+            "description": "Trendy spot for coffee enthusiasts",
+            "logo": "bean_scene.png"
+        },
+        {
+            "name": "Mocha Madness",
+            "location": "Hougang",
+            "description": "Chocolate lover's coffee paradise",
+            "logo": "mocha_madness.png"
+        },
+        {
+            "name": "Drip & Sip",
+            "location": "Woodlands",
+            "description": "Minimalist cafe with pour-over focus",
+            "logo": "drip_and_sip.png"
+        },
+        {
+            "name": "The Daily Grind",
+            "location": "Newton",
+            "description": "No-frills coffee shop for regulars",
+            "logo": "daily_grind.png"
+        },
+        {
+            "name": "Aroma Alley",
+            "location": "Novena",
+            "description": "Fragrant cafe with global coffee selection",
+            "logo": "aroma_alley.png"
+        },
+        {
+            "name": "Brewed Awakening",
+            "location": "Bishan",
+            "description": "Early bird's favorite coffee spot",
+            "logo": "brewed_awakening.png"
+        },
+        {
+            "name": "Cappuccino Castle",
+            "location": "Ang Mo Kio",
+            "description": "Regal setting for coffee connoisseurs",
+            "logo": "cappuccino_castle.png"
+        },
+        {
+            "name": "Steamy Beans",
+            "location": "Hougang",
+            "description": "Hip cafe with a steampunk vibe",
+            "logo": "steamy_beans.png"
+        },
+        {
+            "name": "The Roasted Rooster",
+            "location": "Woodlands",
+            "description": "Farm-to-cup coffee experience",
+            "logo": "roasted_rooster.png"
+        },
+        {
+            "name": "Grind & Shine",
+            "location": "Newton",
+            "description": "Bright and cheerful morning cafe",
+            "logo": "grind_and_shine.png"
+        },
+        {
+            "name": "Espresso Yourself",
+            "location": "Novena",
+            "description": "Artistic cafe with open mic nights",
+            "logo": "espresso_yourself.png"
+        },
+        {
+            "name": "The Busy Bean",
+            "location": "Bishan",
+            "description": "Fast-paced cafe for on-the-go professionals",
+            "logo": "busy_bean.png"
+        },
+        {
+            "name": "Café Serenity",
+            "location": "Ang Mo Kio",
+            "description": "Zen-inspired peaceful coffee retreat",
+            "logo": "cafe_serenity.png"
+        }
+    ],
+    "employees": [
+        {
+            "name": "John Smith",
+            "gender": "Male",
+            "email": "john.smith@email.com",
+            "phone_number": "81234567"
+        },
+        {
+            "name": "Emma Johnson",
+            "gender": "Female",
+            "email": "emma.johnson@email.com",
+            "phone_number": "92345678"
+        },
+        {
+            "name": "Michael Brown",
+            "gender": "Male",
+            "email": "michael.brown@email.com",
+            "phone_number": "83456789"
+        },
+        {
+            "name": "Sophia Davis",
+            "gender": "Female",
+            "email": "sophia.davis@email.com",
+            "phone_number": "94567890"
+        },
+        {
+            "name": "William Wilson",
+            "gender": "Male",
+            "email": "william.wilson@email.com",
+            "phone_number": "85678901"
+        },
+        {
+            "name": "Olivia Taylor",
+            "gender": "Female",
+            "email": "olivia.taylor@email.com",
+            "phone_number": "96789012"
+        },
+        {
+            "name": "James Anderson",
+            "gender": "Male",
+            "email": "james.anderson@email.com",
+            "phone_number": "87890123"
+        },
+        {
+            "name": "Ava Martinez",
+            "gender": "Female",
+            "email": "ava.martinez@email.com",
+            "phone_number": "98901234"
+        },
+        {
+            "name": "Alexander Thomas",
+            "gender": "Male",
+            "email": "alexander.thomas@email.com",
+            "phone_number": "89012345"
+        },
+        {
+            "name": "Mia Hernandez",
+            "gender": "Female",
+            "email": "mia.hernandez@email.com",
+            "phone_number": "90123456"
+        },
+        {
+            "name": "Ethan Moore",
+            "gender": "Male",
+            "email": "ethan.moore@email.com",
+            "phone_number": "81234568"
+        },
+        {
+            "name": "Isabella Clark",
+            "gender": "Female",
+            "email": "isabella.clark@email.com",
+            "phone_number": "92345679"
+        },
+        {
+            "name": "Daniel Lee",
+            "gender": "Male",
+            "email": "daniel.lee@email.com",
+            "phone_number": "83456780"
+        },
+        {
+            "name": "Charlotte Lewis",
+            "gender": "Female",
+            "email": "charlotte.lewis@email.com",
+            "phone_number": "94567891"
+        },
+        {
+            "name": "Matthew Walker",
+            "gender": "Male",
+            "email": "matthew.walker@email.com",
+            "phone_number": "85678902"
+        },
+        {
+            "name": "Amelia Hall",
+            "gender": "Female",
+            "email": "amelia.hall@email.com",
+            "phone_number": "96789013"
+        },
+        {
+            "name": "Joseph Young",
+            "gender": "Male",
+            "email": "joseph.young@email.com",
+            "phone_number": "87890124"
+        },
+        {
+            "name": "Harper Allen",
+            "gender": "Female",
+            "email": "harper.allen@email.com",
+            "phone_number": "98901235"
+        },
+        {
+            "name": "Samuel King",
+            "gender": "Male",
+            "email": "samuel.king@email.com",
+            "phone_number": "89012346"
+        },
+        {
+            "name": "Evelyn Wright",
+            "gender": "Female",
+            "email": "evelyn.wright@email.com",
+            "phone_number": "90123457"
+        }
+    ]
+}
