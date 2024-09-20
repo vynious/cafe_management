@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --experimental-modules --es-module-specifier-resolution=node 'src/**/*.js'",
     "start": "nodemon src/index.js",
     "seed": "node prisma/seed_db.js"
   },
@@ -22,7 +22,14 @@
     "nodemon": "^3.1.6"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.19",
     "@types/multer": "^1.4.12",
-    "prisma": "^5.19.1"
+    "@types/sinon": "^17.0.3",
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
+    "mocha": "^10.7.3",
+    "prisma": "^5.19.1",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
   }
 }

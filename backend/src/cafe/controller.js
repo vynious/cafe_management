@@ -1,11 +1,16 @@
 import CafeService from "./service.js";
-import EmployeeService from "../employee/service.js";
 
 // Rest controller for the cafe
 export default class CafeController {
     constructor() {
         this.cafeService = new CafeService();
-        this.employeeService = new EmployeeService();
+
+        // bind methods to the instance
+        this.getCafeById = this.getCafeById.bind(this);
+        this.getAllCafes = this.getAllCafes.bind(this);
+        this.createCafe = this.createCafe.bind(this);
+        this.updateCafe = this.updateCafe.bind(this);
+        this.deleteCafe = this.deleteCafe.bind(this);
     }
 
     // Endpoint to get a cafe by id
@@ -45,7 +50,7 @@ export default class CafeController {
         } catch (error) {
             console.error('Error creating cafe', error);
             next(error);
-        }   
+        }
     }
 
     // Endpoint to update a cafe by id

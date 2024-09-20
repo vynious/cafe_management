@@ -6,6 +6,9 @@ export default class EmployeeController {
     // constructor for the employee controller
     constructor() {
         this.employeeService = new EmployeeService()
+
+        // bind methods to the instance
+        this.updateEmployee = this.updateEmployee.bind(this);
     }
 
     // endpoint to update employee details by id

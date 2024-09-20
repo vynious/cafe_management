@@ -4,6 +4,11 @@ import ManagementService from "./service.js";
 export default class ManagementController {
     constructor() {
         this.managementService = new ManagementService();
+
+        // bind methods to the instance
+        this.getEmployees = this.getEmployees.bind(this);
+        this.createEmployeeAndEmploymentRecord = this.createEmployeeAndEmploymentRecord.bind(this);
+        this.updateEmployeeAndEmploymentRecord = this.updateEmployeeAndEmploymentRecord.bind(this);
     }
 
     // get all employees for a cafe
@@ -39,7 +44,7 @@ export default class ManagementController {
         }
     }
 
-    async updateEmployee(req, res, next) {
+    async updateEmployeeAndEmploymentRecord(req, res, next) {
         try {
             // validation
             const { employeeId, updatedEmployeeData } = req.body;

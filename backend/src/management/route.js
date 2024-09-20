@@ -8,7 +8,7 @@ const managementController = new ManagementController();
 
 // SETTLED
 // route to get employees / employees for a cafe
-managementRouter.get('/employees', managementController.getEmployees);
+managementRouter.get('/employees', managementController.updateEmployeeAndEmploymentRecord);
 
 
 // SETTLED
