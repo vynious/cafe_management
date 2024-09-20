@@ -32,6 +32,9 @@ app.use("/", cafeRoute)
 app.use("/", managementRoute)
 app.use("/", employmentRoute)
 
+// serve static files
+app.use('/logos', express.static('uploads/cafe_logos'));
+
 // error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

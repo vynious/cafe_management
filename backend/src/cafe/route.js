@@ -1,5 +1,6 @@
 import express from 'express';
 import CafeController from './controller';
+import { handleLogoUpload } from '../middlware/upload';
 
 
 const router = express.Router();
@@ -17,7 +18,8 @@ router.get('/cafes', cafeController.getAllCafes)
 
 // SETTLED
 // route to create a new cafe
-router.post('/cafe', cafeController.createCafe);
+// checks if logo is included in the request body
+router.post('/cafe', handleLogoUpload, cafeController.createCafe);
 
 // SETTLED
 // route to update cafe by id

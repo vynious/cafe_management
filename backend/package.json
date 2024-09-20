@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "seed": "node prisma/seed_db.js"
   },
   "author": "",
   "license": "ISC",
@@ -11,9 +13,12 @@
   "dependencies": {
     "@prisma/client": "^5.19.1",
     "dotenv": "^16.4.5",
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.6"
   },
   "devDependencies": {
+    "@types/multer": "^1.4.12",
     "prisma": "^5.19.1"
   }
 }

@@ -60,10 +60,14 @@ export default class CafeService {
     }
 
     // create a new cafe
-    async createCafe(cafeData) {
+    async createCafe(location, name, description) {
         try {
             return this.prisma_db.cafe.create({
-                data: cafeData,
+                data: {
+                    location,
+                    name,
+                    description,
+                },
             });
         } catch (error) {
             return error

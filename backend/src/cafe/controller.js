@@ -35,7 +35,12 @@ export default class CafeController {
     // Endpoint to create a new cafe
     async createCafe(req, res, next) {
         try {
-            const cafe = await this.cafeService.createCafe(req.body);
+            // validation for required fields
+            const { location, name, description } = req.body;
+            if (!location || !name || !description) {
+                return res.status(400).json({ error: 'Location, name, and description are required' });
+            }
+            const cafe = await this.cafeService.createCafe(location, name, description);
             res.json(cafe);
         } catch (error) {
             console.error('Error creating cafe', error);
