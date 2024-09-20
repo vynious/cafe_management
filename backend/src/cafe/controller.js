@@ -1,5 +1,5 @@
-import CafeService from "./service";
-import EmployeeService from "../employee/service";
+import CafeService from "./service.js";
+import EmployeeService from "../employee/service.js";
 
 // Rest controller for the cafe
 export default class CafeController {

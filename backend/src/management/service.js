@@ -1,13 +1,14 @@
-import employmentService from "../employment/service";
-import employeeService from "../employee/service";
-import cafeService from "../cafe/service";
-import prisma_db from "../utils/prismaClient"; // Assuming prisma client is initialized here
+import EmploymentService from "../employment/service.js";
+import EmployeeService from "../employee/service.js";
+import CafeService from "../cafe/service.js";
+import { prisma_db } from "../../prisma/connection.js";
+
 
 export default class ManagementService {
     constructor() {
-        this.employmentService = new employmentService();
-        this.employeeService = new employeeService();
-        this.cafeService = new cafeService();
+        this.employmentService = new EmploymentService();
+        this.employeeService = new EmployeeService();
+        this.cafeService = new CafeService();
         this.prisma_db = prisma_db; 
     }
 

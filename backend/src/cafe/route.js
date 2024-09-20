@@ -1,9 +1,9 @@
 import express from 'express';
-import CafeController from './controller';
-import { handleLogoUpload } from '../middlware/upload';
+import CafeController from './controller.js';
+import { handleLogoUpload } from '../middlware/upload.js';
 
 
-const router = express.Router();
+const cafeRouter = express.Router();
 const cafeController = new CafeController();
 
 // SETTLED
@@ -13,22 +13,20 @@ const cafeController = new CafeController();
 // If a valid location is provided, it will filter the list to return only cafes that is within the area
 // If an invalid location is provided, it should return an empty list
 // If no location is provided, it should list down all cafes
-router.get('/cafes', cafeController.getAllCafes)
+cafeRouter.get('/cafes', cafeController.getAllCafes)
 
 
 // SETTLED
 // route to create a new cafe
 // checks if logo is included in the request body
-router.post('/cafe', handleLogoUpload, cafeController.createCafe);
+cafeRouter.post('/cafe', handleLogoUpload, cafeController.createCafe);
 
 // SETTLED
 // route to update cafe by id
-router.put('/:id', cafeController.updateCafe);
+cafeRouter.put('/:id', cafeController.updateCafe);
 
 // SETTLED
 // route to delete cafe by id
-router.delete('/:id', cafeController.deleteCafe);
+cafeRouter.delete('/:id', cafeController.deleteCafe);
 
-// SETTLED
-// route to terminate employment for an employee for a cafe
-router.delete('/employment', cafeController.terminateEmployment);
+export default cafeRouter;

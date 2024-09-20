@@ -1,4 +1,4 @@
-import ManagementService from "./service";
+import ManagementService from "./service.js";
 
 
 export default class ManagementController {

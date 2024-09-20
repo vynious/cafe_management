@@ -1,7 +1,8 @@
 import express from 'express';
-import EmploymentController from './controller';
+import EmploymentController from './controller.js';
 
-const router = express.Router();
+const employmentRouter = express.Router();
 
 const employmentController = new EmploymentController();
 
+export default employmentRouter;

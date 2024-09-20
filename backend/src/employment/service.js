@@ -1,4 +1,4 @@
-import { prisma_db } from "../../prisma/connection";
+import { prisma_db } from "../../prisma/connection.js";
 
 export default class EmploymentService {
     constructor() {

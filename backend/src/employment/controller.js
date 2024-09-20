@@ -1,4 +1,4 @@
-import EmployeeController from "../employee/controller";
+import EmployeeController from "../employee/controller.js";
 
 export default class EmploymentController {
 

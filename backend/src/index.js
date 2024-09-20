@@ -1,13 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from "cors"
-import cookieParser from 'cookie-parser';
+import helmet from "helmet"
 
 // import routes
-import employeeRoute from "./employee/route"
-import cafeRoute from "./cafe/route"
-import managementRoute from "./management/route"
-import employmentRoute from "./employment/route"
+import employeeRouter from "./employee/route.js"
+import cafeRouter from "./cafe/route.js"
+import managementRouter from "./management/route.js"
+import employmentRouter from "./employment/route.js"
 
 // load environment variables
 dotenv.config()
@@ -18,22 +18,24 @@ const app = express();
 // middleware
 app.use(cors());
 app.use(helmet());
-app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => { 
+app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
 // mount routes
-app.use("/", employeeRoute)
-app.use("/", cafeRoute)
-app.use("/", managementRoute)
-app.use("/", employmentRoute)
+app.use("/", employeeRouter)
+app.use("/", cafeRouter)
+app.use("/", managementRouter)
+app.use("/", employmentRouter)
 
 // serve static files
-app.use('/logos', express.static('uploads/cafe_logos'));
+app.use('/logos', express.static('uploads/cafe_logos'), (req, res, next) => {
+    // if the file is not found, fallback to a default image
+    res.sendFile('default.png', { root: 'uploads/cafe_logos' });
+});
 
 // error handling middleware
 app.use((err, req, res, next) => {

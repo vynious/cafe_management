@@ -1,5 +1,5 @@
-import EmployeeService from "./service";
-import { isValidEmail, isValidPhoneNumber } from "../utils/validation";
+import EmployeeService from "./service.js";
+import { isValidEmail, isValidPhoneNumber } from "../utils/validation.js";
 
 // rest controller for the employee
 export default class EmployeeController {

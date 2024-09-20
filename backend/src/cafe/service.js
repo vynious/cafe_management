@@ -1,4 +1,4 @@
-import { prisma_db } from "../../prisma/connection";
+import { prisma_db } from "../../prisma/connection.js";
 
 // service for the cafe that interacts with the database and encapsulates the logic for the cafe
 export default class CafeService {
