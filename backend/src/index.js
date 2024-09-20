@@ -21,15 +21,15 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("Hello World")
 })
 
 // mount routes
-app.use("/", employeeRouter)
-app.use("/", cafeRouter)
-app.use("/", managementRouter)
-app.use("/", assignmentRouter)
+app.use("/api", employeeRouter)
+app.use("/api", cafeRouter)
+app.use("/api", managementRouter)
+app.use("/api", assignmentRouter)
 
 // serve static files
 app.use('/logos', express.static('uploads/cafe_logos'), (req, res, next) => {

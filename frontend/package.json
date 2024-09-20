@@ -10,11 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.1",
+    "@tanstack/react-query": "^5.56.2",
+    "@tanstack/react-router": "^1.58.3",
+    "ag-grid-community": "^32.2.0",
+    "ag-grid-react": "^32.2.0",
+    "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@tanstack/router-cli": "^1.58.1",
+    "@tanstack/router-devtools": "^1.58.3",
+    "@tanstack/router-plugin": "^1.58.4",
+    "@tanstack/router-vite-plugin": "^1.58.4",
+    "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
