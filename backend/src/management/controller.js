@@ -7,17 +7,17 @@ export default class ManagementController {
     }
 
     // get all employees for a cafe
-    async getEmployees(req, res) {
+    async getEmployees(req, res, next) {
         try {
             const employees = await this.managementService.getEmployees(req.params.cafeName);
             res.json(employees);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            next(error)
         }
     }
 
-    // get all cafes
-    async createEmployeeAndEmploymentRecord(req, res) {
+    // get all cafes    
+    async createEmployeeAndEmploymentRecord(req, res, next) {
         try {
             const { cafeId, newEmployeeData } = req.body;
 
@@ -35,11 +35,11 @@ export default class ManagementController {
             const employee = await this.managementService.createEmployeeAndEmploymentRecord(cafeId, newEmployeeData);
             res.json(employee);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            next(error)
         }
     }
 
-    async updateEmployee(req, res) {
+    async updateEmployee(req, res, next) {
         try {
             // validation
             const { employeeId, updatedEmployeeData } = req.body;
@@ -52,7 +52,7 @@ export default class ManagementController {
 
             res.json(updatedInfo);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            next(error)
         }
     }
 

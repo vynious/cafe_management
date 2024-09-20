@@ -6,7 +6,7 @@ const managementController = new ManagementController();
 
 
 
-// SETTLED ?? 
+// SETTLED
 // route to get employees / employees for a cafe
 router.get('/employees', managementController.getEmployees);
 

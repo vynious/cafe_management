@@ -1,4 +1,4 @@
-import { prisma_db } from "../../prisma/connect_db";
+import { prisma_db } from "../../prisma/connection";
 
 // service for the cafe that interacts with the database and encapsulates the logic for the cafe
 export default class CafeService {
@@ -23,8 +23,7 @@ export default class CafeService {
                 },
             });
         } catch (error) {
-            // todo: return error message
-            return
+            return error    
         }
     }
 
@@ -35,8 +34,7 @@ export default class CafeService {
                 where: { cafeId },
             });
         } catch (error) {
-            // todo: return error message
-            return
+                return error
         }
     }
 
@@ -57,8 +55,7 @@ export default class CafeService {
                 },
             });
         } catch (error) {
-            // todo: return error message
-            return
+            return error
         }
     }
 
@@ -69,8 +66,7 @@ export default class CafeService {
                 data: cafeData,
             });
         } catch (error) {
-            // todo: return error message
-            return
+            return error
         }
     }
 
@@ -82,8 +78,7 @@ export default class CafeService {
                 data: cafeData,
             });
         } catch (error) {
-            // todo: return error message
-            return
+            return error
         }
     }
 
@@ -94,8 +89,7 @@ export default class CafeService {
                 where: { id },
             });
         } catch (error) {
-            // todo: return error message
-            return
+            return error
         }
     }
 

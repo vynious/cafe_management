@@ -9,7 +9,7 @@ export default class EmployeeController {
     }
 
     // endpoint to update employee details by id
-    async updateEmployee(req, res) {
+    async updateEmployee(req, res, next) {
         try {
             const { employeeId, name, email, phone_number, gender } = req.body;
 
@@ -34,7 +34,7 @@ export default class EmployeeController {
             res.json(employee);
 
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            next(error)
         }
     }
 }

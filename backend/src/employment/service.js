@@ -1,10 +1,11 @@
-import { prisma_db } from "../../prisma/connect_db";
+import { prisma_db } from "../../prisma/connection";
 
 export default class EmploymentService {
     constructor() {
         this.prisma_db = prisma_db;
     }
 
+    // ------------- CRUD functions ------------- //
     // get all employees for a cafe
     // order by number of days worked desc based on startDate
     async getActiveEmployeesForCafe(cafeName) {
@@ -80,6 +81,8 @@ export default class EmploymentService {
         });
     }
 
+
+    // ------------- Helper functions ------------- //
     // get current employment records for an employee that hasn't ended
     calculateDaysWorked(startDate, currentDate) {
         // calculate the number of days worked

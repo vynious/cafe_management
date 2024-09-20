@@ -1,4 +1,4 @@
-import { prisma_db } from "../../prisma/connect_db";
+import { prisma_db } from "../../prisma/connection";
 
 // service for the employee that interacts with the database and encapsulates the logic for the employee
 export default class EmployeeService {

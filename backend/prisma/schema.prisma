@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Employee {
-  id           String       @id @default(cuid())
+  id           String       @id @default(uuid())
   name         String
   gender       String
   email        String       @unique
@@ -23,7 +23,7 @@ model Employee {
 }
 
 model Cafe {
-  id           String       @id @default(cuid())
+  id           String       @id @default(uuid())
   name         String
   location     String
   description  String
@@ -32,7 +32,7 @@ model Cafe {
 }
 
 model Employment {
-  id          String   @id @default(cuid())
+  id          String   @id @default(uuid())
   employeeId  String
   cafeId      String
   startDate   DateTime @default(now())
