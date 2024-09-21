@@ -4,10 +4,10 @@ export interface Cafe {
   description: string;
   logo: string;
   location: string;
-  employees: string[]; // Array of employee IDs
+  count: number; // Array of employee IDs
 }
 
-export interface CafeFormData {
+export interface CreateCafeFormData {
   name: string;
   description: string;
   logo: File | null;
@@ -15,5 +15,18 @@ export interface CafeFormData {
 }
 
 export interface CafeQuery {
-    location: string
+  cafeId?: string;
+  location?: string;
+  name?: string;
+  description?: string;
+}
+
+export interface EditCafeFormData {
+  cafeId: string;
+  updateCafeData: {
+    name?: string;
+    description?: string;
+    logo?: File | null;
+    location?: string;
+  };
 }

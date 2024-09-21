@@ -1,7 +1,7 @@
 // src/api/cafeApi.ts
 
 import axios from 'axios';
-import { Cafe, CafeFormData } from '../types/Cafe';
+import { Cafe, CreateCafeFormData } from '../types/Cafe';
 
 
 export const API_URL = `${import.meta.env.VITE_BACKEND_URL}/cafes`;
@@ -15,7 +15,7 @@ export const getCafes = async (location?: string): Promise<Cafe[]> => {
 };
 
 // create a new cafe 
-export const createCafe = async (cafeData: CafeFormData): Promise<Cafe> => {
+export const createCafe = async (cafeData: CreateCafeFormData): Promise<Cafe> => {
   const formData = new FormData();
   Object.entries(cafeData).forEach(([key, value]) => {
     if (value !== null) {
@@ -37,7 +37,7 @@ export const createCafe = async (cafeData: CafeFormData): Promise<Cafe> => {
 };
 
 // update an existing cafe
-export const updateCafe = async (id: string, cafeData: Partial<CafeFormData>): Promise<Cafe> => {
+export const updateCafe = async (id: string, cafeData: Partial<CreateCafeFormData>): Promise<Cafe> => {
   const formData = new FormData();
   Object.entries(cafeData).forEach(([key, value]) => {
     if (value !== null) {

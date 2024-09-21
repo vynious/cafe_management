@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert, AlertTitle } from '@mui/material';
 
 // Define the props type for the error component
 interface ErrorComponentProps {
@@ -6,9 +7,10 @@ interface ErrorComponentProps {
 }
 
 const ErrorComponent: React.FC<ErrorComponentProps> = ({ error }) => (
-    <div className="error-container">
-        Error: {error?.message || 'An unexpected error occurred.'}
-    </div>
+    <Alert severity="error">
+        <AlertTitle>Error</AlertTitle>
+        {error?.message || 'An unexpected error occurred.'}
+    </Alert>
 );
 
 export default ErrorComponent;
