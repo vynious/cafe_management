@@ -1,28 +1,36 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { WrappedFieldProps } from 'redux-form'
-import { TextField, Button, Box, Typography } from '@mui/material'
+import { Button, Box, Typography } from '@mui/material'
 
 interface RenderFieldProps extends WrappedFieldProps {
     label: string;
     type: string;
 }
 
-export const RenderField: React.FC<RenderFieldProps> = ({ input, label, type, meta: { touched, error } }) => {
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+
+
+export const RenderField: React.FC<RenderFieldProps> = ({
+    input,
+    label,
+    type,
+    meta: { touched, error }
+}) => {
     const [preview, setPreview] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (typeof input.onChange === 'function') {
-            const file = e.target.files?.[0];
-            if (file) {
-                input.onChange(file);
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    setPreview(reader.result as string);
-                };
-                reader.readAsDataURL(file);
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > MAX_FILE_SIZE) {
+                // Show an error message if the file size exceeds the limit
+                alert(`File size should not exceed ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
+                return; // Exit early
             }
+            input.onChange(file); // Redux Form onChange
+            const reader = new FileReader();
+            reader.onloadend = () => setPreview(reader.result as string);
+            reader.readAsDataURL(file);
         }
-        // Add any additional onChange logic here if needed
     };
 
     if (type === 'file') {
@@ -35,7 +43,7 @@ export const RenderField: React.FC<RenderFieldProps> = ({ input, label, type, me
                     style={{ display: 'none' }}
                     id={input.name}
                     onChange={handleChange}
-                    value=""
+                    value="" // prevent controlled/uncontrolled component issue
                 />
                 <label htmlFor={input.name}>
                     <Button variant="contained" component="span">
@@ -53,18 +61,8 @@ export const RenderField: React.FC<RenderFieldProps> = ({ input, label, type, me
                     </Typography>
                 )}
             </Box>
-        )
+        );
     }
-    return (
-        <TextField
-            {...input}
-            type={type}
-            label={label}
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            error={touched && !!error}
-            helperText={touched && error}
-        />
-    )
-}
+
+    return null;
+};

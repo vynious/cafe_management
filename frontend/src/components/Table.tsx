@@ -1,18 +1,18 @@
 import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import type { ColDef } from 'ag-grid-community';
-import type { Cafe } from '../types/Cafe';
+import type { GetCafeResponse } from '../types/Cafe';
 import { Box, Button, Link } from '@mui/material';
 import { Link as TanstackLink } from '@tanstack/react-router';
 
 interface CafeTableProps {
-    data: Cafe[];
-    onEditCafe: (cafe: Cafe) => void;
+    data: GetCafeResponse[];
+    onEditCafe: (cafe: GetCafeResponse) => void;
     onDeleteCafe: (cafeId: string) => void;
 }
 
 const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe }) => {
-    const columnDefs: ColDef<Cafe>[] = [
+    const columnDefs: ColDef<GetCafeResponse>[] = [
         {
             field: 'logo',
             headerName: '',
@@ -35,13 +35,13 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
             field: 'employees',
             headerName: 'Employees',
             width: 150,
-            cellRenderer: (params: { data: Cafe }) => (
+            cellRenderer: (params: { data: GetCafeResponse }) => (
                 <EmployeesLink cafe={params.data} />
             ),
         },
         {
             headerName: 'Actions',
-            cellRenderer: (params: { data: Cafe }) => (
+            cellRenderer: (params: { data: GetCafeResponse }) => (
                 <ActionButtons cafe={params.data} onEdit={onEditCafe} onDelete={onDeleteCafe} />
             ),
             sortable: false,
@@ -72,7 +72,7 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
     );
 };
 
-const EmployeesLink: React.FC<{ cafe: Cafe }> = ({ cafe }) => (
+const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
     <TanstackLink
         to="/employees"
         search={{ cafe: cafe.name }}
@@ -99,7 +99,7 @@ const EmployeesLink: React.FC<{ cafe: Cafe }> = ({ cafe }) => (
     </TanstackLink>
 );
 
-const ActionButtons: React.FC<{ cafe: Cafe, onEdit: (cafe: Cafe) => void, onDelete: (cafeId: string) => void }> = ({ cafe, onEdit, onDelete }) => (
+const ActionButtons: React.FC<{ cafe: GetCafeResponse, onEdit: (cafe: GetCafeResponse) => void, onDelete: (cafeId: string) => void }> = ({ cafe, onEdit, onDelete }) => (
     <Box className="action-buttons" sx={{ display: 'flex', justifyContent: 'center' }}>
         <Button
             variant="contained"
