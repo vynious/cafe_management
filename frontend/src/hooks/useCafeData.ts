@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { CafeQuery } from '../types/Cafe';
 import { API_URL, getCafes } from '../api/cafeApi';
 
-export const useCafeData = (params: CafeQuery) => {
+export const useCafeData = (params: {location: string}) => {
     const queryKey = [API_URL, params]
     const result = useQuery({
         queryKey,

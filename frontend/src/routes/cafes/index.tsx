@@ -16,7 +16,7 @@ import { useCafeData } from '../../hooks/useCafeData'
 import type { GetCafeResponse } from '../../types/Cafe'
 import LoadingComponent from '../../components/LoadingComponent'
 import ErrorComponent from '../../components/ErrorComponent'
-import CafeTable from '../../components/Table'
+import CafeTable from '../../components/CafeTable'
 import DeleteConfirmation from '../../components/DeleteConfirmation'
 import theme from '../../theme'
 
@@ -37,10 +37,9 @@ const GetCafeResponse: React.FC = React.memo(() => {
         navigate({
             to: '/cafes/edit/$id',
             params: { id: cafe.id },
-            search: { cafeData: GetCafeResponse }
+            search: { cafeData: JSON.stringify(cafe) }
         })
     }, [navigate])
-
 
     const handleDeleteCafe = useCallback((cafeId: string) => {
         setDeleteConfirmation({ isOpen: true, cafeId })
@@ -59,7 +58,6 @@ const GetCafeResponse: React.FC = React.memo(() => {
         setDeleteConfirmation({ isOpen: false, cafeId: null })
     }, [deleteConfirmation.cafeId])
 
-
     const handleSearchSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (locationQuery !== searchTerm) {
@@ -68,7 +66,7 @@ const GetCafeResponse: React.FC = React.memo(() => {
     }, [locationQuery, searchTerm]);
 
     if (isError) return <ErrorComponent error={error} />
-
+    
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="lg" className="cafe-list-container">
@@ -118,7 +116,7 @@ const GetCafeResponse: React.FC = React.memo(() => {
                     <LoadingComponent />
                 ) : (
                     <CafeTable
-                        data={data}
+                        data={data || []}
                         onEditCafe={handleEditCafe}
                         onDeleteCafe={handleDeleteCafe}
                     />

@@ -13,6 +13,9 @@ export interface GetCafeResponse {
   location: string;
   description: string;
   logo: string;
+  _count?: {
+    employees: number
+  }
 }
 
 

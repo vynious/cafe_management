@@ -22,7 +22,6 @@ export const RenderField: React.FC<RenderFieldProps> = ({
         const file = e.target.files?.[0];
         if (file) {
             if (file.size > MAX_FILE_SIZE) {
-                // Show an error message if the file size exceeds the limit
                 alert(`File size should not exceed ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
                 return; // Exit early
             }

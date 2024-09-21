@@ -1,10 +1,10 @@
-export interface Employee {
+export interface GetEmployeeResponse {
     id: string;
     name: string;
     email: string;
-    phoneNumber: string;
+    phone_number: string;
     daysWorked: number;
-    cafeName: string;
+    cafe: string;
 }
 
 export interface EditEmployeeFormData {
@@ -16,7 +16,7 @@ export interface EditEmployeeFormData {
 }
 
 export interface EmployeesQuery {
-    cafeName: string
+    cafe: string
 }
 
 export interface EmployeePersonalData {
