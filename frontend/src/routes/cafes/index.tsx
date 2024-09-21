@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useCafeData } from '../../hooks/useCafeData';
 import type { Cafe } from '../../types/Cafe';
 import LoadingComponent from '../../components/LoadingComponent';
@@ -31,7 +31,7 @@ const Cafe: React.FC = React.memo(() => {
     );
 
     const handleEditCafe = (cafe: Cafe) => {
-        // TODO: Implement edit functionality
+        // TODO: edit functionality
         console.log('Edit cafe:', cafe);
     };
 
@@ -41,7 +41,7 @@ const Cafe: React.FC = React.memo(() => {
 
     const confirmDelete = () => {
         if (deleteConfirmation.cafeId) {
-            // TODO: Implement actual delete request to the server
+            // TODO: delete functionality
             console.log('Deleting cafe with ID:', deleteConfirmation.cafeId);
         }
         setDeleteConfirmation({ isOpen: false, cafeId: null });
@@ -56,6 +56,16 @@ const Cafe: React.FC = React.memo(() => {
                 <Typography variant="h4" component="h1" className="cafe-list-title" gutterBottom>
                     Cafes Data
                 </Typography>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+                    <Button
+                        component={Link}
+                        to="/cafes/add"
+                        variant="contained"
+                        color="primary"
+                    >
+                        Add New Cafe
+                    </Button>
+                </Box>
                 <Box component="form" onSubmit={handleLocationSearch} className="location-search" mb={3}>
                     <TextField
                         label="Search by location"
