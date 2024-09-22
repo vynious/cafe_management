@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add'
 import SearchIcon from '@mui/icons-material/Search'
 
 import { useEmployeeData } from '../../hooks/useEmployeeData'
-import type { GetEmployeeResponse } from '../../types/Employee'
+import type { GetEmployeeResponse, FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee'
 import LoadingComponent from '../../components/LoadingComponent'
 import ErrorComponent from '../../components/ErrorComponent'
 import EmployeeTable from '../../components/EmployeeTable'
@@ -22,6 +22,7 @@ import theme from '../../theme'
 
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
+import { flattenEmployeeData } from '../../utils/flatten'
 
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
@@ -33,13 +34,21 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
     employeeId: null as string | null,
   })
   const navigate = useNavigate()
-  const { data, isLoading, isError, error } = useEmployeeData({ cafe: searchTerm })
+  const { data: rawData, isLoading, isError, error } = useEmployeeData({ cafe: searchTerm })
+  
+  const data = React.useMemo(() => {
+    if (!rawData) return null;
+    return rawData.map(employee => {
+      return flattenEmployeeData(employee)
+    });
+  }, [rawData]);
 
-  const handleEditEmployee = useCallback((employee: GetEmployeeResponse) => {
+  console.log(data)
+
+  const handleEditEmployee = useCallback((flattenEmployeeData: FlattenedGetEmployeeAssignmentResponse) => {
     navigate({
       to: '/employees/edit/$id',
-      params: { id: employee.id },
-      search: { employeeData: GetEmployeeResponse }
+      params: { id: flattenEmployeeData.employeeId },
     })
   }, [navigate])
 
@@ -128,7 +137,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
           isOpen={deleteConfirmation.isOpen}
           onClose={() => setDeleteConfirmation({ isOpen: false, employeeId: null })}
           onConfirm={confirmDelete}
-          itemName={data?.find((employee) => employee.id === deleteConfirmation.employeeId)?.name || 'this employee'}
+          itemName={data?.find((employee) => employee.id === deleteConfirmation.employeeId)?.employeeName || 'this employee'}
         />
       </Container>
     </ThemeProvider>

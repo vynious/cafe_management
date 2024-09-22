@@ -4,7 +4,7 @@ import type { ColDef } from 'ag-grid-community';
 import { Box } from '@mui/material';
 
 interface TableProps<T> {
-    data: T[];
+    data: T[] | null;
     columnDefs: ColDef<T>[];
     rowHeight?: number;
     headerHeight?: number;

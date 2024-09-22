@@ -1,18 +1,18 @@
 import React from 'react';
 import { ColDef } from 'ag-grid-community';
 import { Button, Box, Tooltip } from '@mui/material';
-import { GetEmployeeResponse } from '../types/Employee';
+import { FlattenedGetEmployeeAssignmentResponse } from '../types/Employee';
 import Table from './Table';
 
 interface EmployeeTableProps {
-    data: GetEmployeeResponse[];
-    onEditEmployee: (employee: GetEmployeeResponse) => void;
+    data: FlattenedGetEmployeeAssignmentResponse[] | null;
+    onEditEmployee: (employee: FlattenedGetEmployeeAssignmentResponse) => void;
     onDeleteEmployee: (employeeId: string) => void;
 }
 
 const ActionButtons: React.FC<{
-    employee: GetEmployeeResponse;
-    onEdit: (employee: GetEmployeeResponse) => void;
+    employee: FlattenedGetEmployeeAssignmentResponse;
+    onEdit: (employee: FlattenedGetEmployeeAssignmentResponse) => void;
     onDelete: (employeeId: string) => void;
 }> = ({ employee, onEdit, onDelete }) => (
     <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -25,25 +25,23 @@ const ActionButtons: React.FC<{
     </Box>
 );
 
+
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onDeleteEmployee }) => {
-    const createTooltipRenderer = (field: keyof GetEmployeeResponse) => (params: any) => (
+    const createTooltipRenderer = (field: keyof FlattenedGetEmployeeAssignmentResponse) => (params: any) => (
         <Tooltip title={params.value}>
             <span>{params.value}</span>
         </Tooltip>
     );
 
-    const columnDefs: ColDef<GetEmployeeResponse>[] = [
-        { field: 'id', headerName: 'ID', width: 70, cellRenderer: createTooltipRenderer('id') },
-        { field: 'name', headerName: 'Name', width: 130, cellRenderer: createTooltipRenderer('name') },
-        { field: 'email', headerName: 'Email', width: 200, cellRenderer: createTooltipRenderer('email') },
-        { field: 'phone_number', headerName: 'Phone Number', width: 130, cellRenderer: createTooltipRenderer('phone_number') },
-        { field: 'daysWorked', headerName: 'Days Worked', width: 130, cellRenderer: createTooltipRenderer('daysWorked') },
-        { field: 'cafe', headerName: 'Cafe', width: 130, cellRenderer: createTooltipRenderer('cafe') },
+    const columnDefs: ColDef<FlattenedGetEmployeeAssignmentResponse>[] = [
+        { field: 'employeeId', headerName: 'ID', width: 70, cellRenderer: createTooltipRenderer('employeeId') },
+        { field: 'employeeName', headerName: 'Name', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('employeeName') },
+        { field: 'employeeEmail', headerName: 'Email', flex: 1, minWidth: 200, cellRenderer: createTooltipRenderer('employeeEmail') },
+        { field: 'employeePhoneNumber', headerName: 'Phone Number', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('employeePhoneNumber') },
+        { field: 'employeeDaysWorked', headerName: 'Days Worked', width: 120, cellRenderer: createTooltipRenderer('employeeDaysWorked') },
+        { field: 'cafeName', headerName: 'Cafe', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('cafeName') },
         {
             headerName: 'Actions',
-            sortable: false,
-            filter: false,
-            width: 200,
             cellRenderer: (params: any) => (
                 <ActionButtons
                     employee={params.data}
@@ -51,11 +49,15 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onD
                     onDelete={onDeleteEmployee}
                 />
             ),
+            sortable: false,
+            filter: false,
+            width: 200,
             cellStyle: { display: 'flex', alignItems: 'center', justifyContent: 'center' },
         },
     ];
 
     return <Table data={data} columnDefs={columnDefs} />;
 };
+
 
 export default EmployeeTable;
