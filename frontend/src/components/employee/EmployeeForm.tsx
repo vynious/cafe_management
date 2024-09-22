@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, FormProps, WrappedFieldProps } from 'redux-form'
 import { Button, Box, Typography, Container, Paper, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Select, MenuItem } from '@mui/material'
-import { ReusableTextbox } from '../Textbox'
+import { ReusableTextbox } from '../shared/Textbox'
 import type { CreateEmployeeFormData } from '../../types/Employee'
 import { useCafeData } from '../../hooks/useCafeData'
 import { GetCafeResponse } from '../../types/Cafe'

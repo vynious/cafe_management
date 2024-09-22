@@ -1,8 +1,8 @@
 import React from 'react'
 import { Field, FormProps } from 'redux-form'
 import { Button, Box, Typography, Container, Paper } from '@mui/material'
-import { RenderField } from '../RenderField'
-import { ReusableTextbox } from '../Textbox'
+import { RenderField } from '../shared/RenderField'
+import { ReusableTextbox } from '../shared/Textbox'
 import type { CreateCafeRequest } from '../../types/Cafe'
 
 interface CafeFormProps extends FormProps<CreateCafeRequest, any, any> {
@@ -10,7 +10,7 @@ interface CafeFormProps extends FormProps<CreateCafeRequest, any, any> {
     submitting: boolean;
     onCancel: () => void;
     submitButtonText: string;
-    initialValues?: Partial<CreateCafeRequest>; 
+    initialValues?: Partial<CreateCafeRequest>;
 }
 
 export const CafeForm: React.FC<CafeFormProps> = (props) => {

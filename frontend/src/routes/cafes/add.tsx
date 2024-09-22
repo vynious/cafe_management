@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { reduxForm, FormErrors, InjectedFormProps } from 'redux-form'
 import { useNavigate } from '@tanstack/react-router'
 import { CafeForm } from '../../components/cafe/CafeForm'
-import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog'
+import { UnsavedChangesDialog } from '../../components/shared/UnsavedChangesDialog'
 import { createFileRoute } from '@tanstack/react-router'
 import { createCafe } from '../../api/cafeApi'
 import { CreateCafeRequest } from '../../types/Cafe'
@@ -61,7 +61,7 @@ const AddCafeFormRedux = reduxForm<CreateCafeRequest>({
 })(AddCafeForm)
 
 const AddCafePage: React.FC = () => <AddCafeFormRedux />
-;
+  ;
 export const Route = createFileRoute('/cafes/add')({
   component: AddCafePage,
 })

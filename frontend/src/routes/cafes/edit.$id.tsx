@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { reduxForm, FormErrors, InjectedFormProps } from 'redux-form';
 import { useNavigate, useParams } from '@tanstack/react-router';
 import { CafeForm } from '../../components/cafe/CafeForm';
-import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
+import { UnsavedChangesDialog } from '../../components/shared/UnsavedChangesDialog';
 import { getCafeById, updateCafe } from '../../api/cafeApi';
 import { createFileRoute } from '@tanstack/react-router';
 import { CreateCafeRequest, EditCafeRequest } from '../../types/Cafe';

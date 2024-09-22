@@ -15,10 +15,10 @@ import SearchIcon from '@mui/icons-material/Search'
 
 import { useCafeData } from '../../hooks/useCafeData'
 import type { GetCafeResponse } from '../../types/Cafe'
-import LoadingComponent from '../../components/LoadingComponent'
-import ErrorComponent from '../../components/ErrorComponent'
+import LoadingComponent from '../../components/shared/LoadingComponent'
+import ErrorComponent from '../../components/shared/ErrorComponent'
 import CafeTable from '../../components/cafe/CafeTable'
-import DeleteConfirmation from '../../components/DeleteConfirmation'
+import DeleteConfirmation from '../../components/shared/DeleteConfirmation'
 import theme from '../../theme'
 
 import 'ag-grid-community/styles/ag-grid.css'

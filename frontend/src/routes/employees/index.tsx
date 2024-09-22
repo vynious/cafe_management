@@ -15,10 +15,10 @@ import SearchIcon from '@mui/icons-material/Search'
 
 import { useEmployeeData } from '../../hooks/useEmployeeData'
 import type { GetEmployeeResponse, FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee'
-import LoadingComponent from '../../components/LoadingComponent'
-import ErrorComponent from '../../components/ErrorComponent'
+import LoadingComponent from '../../components/shared/LoadingComponent'
+import ErrorComponent from '../../components/shared/ErrorComponent'
 import EmployeeTable from '../../components/employee/EmployeeTable'
-import DeleteConfirmation from '../../components/DeleteConfirmation'
+import DeleteConfirmation from '../../components/shared/DeleteConfirmation'
 import theme from '../../theme'
 
 import 'ag-grid-community/styles/ag-grid.css'
@@ -28,7 +28,7 @@ import { deleteEmployee } from '../../api/employeeApi'
 
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
-  const {cafe : initialCafeName } = useSearch({ from: '/employees/' })
+  const { cafe: initialCafeName } = useSearch({ from: '/employees/' })
   const [cafeQuery, setCafeQuery] = useState(initialCafeName || '')
   const [searchTerm, setSearchTerm] = useState(initialCafeName || '')
   const [deleteConfirmation, setDeleteConfirmation] = useState({
@@ -62,7 +62,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
   const confirmDelete = useCallback(async () => {
     if (deleteConfirmation.employeeId) {
       try {
-        await deleteEmployee(deleteConfirmation.employeeId)        
+        await deleteEmployee(deleteConfirmation.employeeId)
         // invalidate and refetch
         queryClient.invalidateQueries({ queryKey: ['employees', searchTerm] })
         window.location.reload()

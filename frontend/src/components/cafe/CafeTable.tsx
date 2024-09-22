@@ -3,9 +3,9 @@ import { ColDef } from 'ag-grid-community';
 import type { GetCafeResponse } from '../../types/Cafe';
 import { Box, Link, Tooltip } from '@mui/material';
 import { Link as TanstackLink } from '@tanstack/react-router';
-import Table from '../Table';
-import ActionButtons from '../ActionButtons';
-import TooltipCell from '../Tooltip';
+import Table from '../shared/Table';
+import ActionButtons from '../shared/ActionButtons';
+import TooltipCell from '../shared/Tooltip';
 
 interface CafeTableProps {
     data: GetCafeResponse[];
