@@ -4,6 +4,7 @@ import { Tooltip } from '@mui/material';
 import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
 import Table from '../Table';
 import ActionButtons from '../ActionButtons';
+import TooltipCell from '../Tooltip';
 
 
 interface EmployeeTableProps {
@@ -21,12 +22,12 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onD
     );
 
     const columnDefs: ColDef<FlattenedGetEmployeeAssignmentResponse>[] = [
-        { field: 'employeeId', headerName: 'ID', width: 70, cellRenderer: createTooltipRenderer('employeeId') },
-        { field: 'employeeName', headerName: 'Name', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('employeeName') },
-        { field: 'employeeEmail', headerName: 'Email', flex: 1, minWidth: 200, cellRenderer: createTooltipRenderer('employeeEmail') },
-        { field: 'employeePhoneNumber', headerName: 'Phone Number', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('employeePhoneNumber') },
-        { field: 'employeeDaysWorked', headerName: 'Days Worked', width: 120, cellRenderer: createTooltipRenderer('employeeDaysWorked') },
-        { field: 'cafeName', headerName: 'Cafe', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('cafeName') },
+        { field: 'employeeId', headerName: 'ID', width: 70, cellRenderer: TooltipCell },
+        { field: 'employeeName', headerName: 'Name', flex: 1, minWidth: 150, cellRenderer: TooltipCell },
+        { field: 'employeeEmail', headerName: 'Email', flex: 1, minWidth: 200, cellRenderer: TooltipCell },
+        { field: 'employeePhoneNumber', headerName: 'Phone Number', flex: 1, minWidth: 150, cellRenderer: TooltipCell },
+        { field: 'employeeDaysWorked', headerName: 'Days Worked', width: 120, cellRenderer: TooltipCell },
+        { field: 'cafeName', headerName: 'Cafe', flex: 1, minWidth: 150, cellRenderer: TooltipCell },
         {
             headerName: 'Actions',
             cellRenderer: (params: { data: FlattenedGetEmployeeAssignmentResponse }) => (

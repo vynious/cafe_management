@@ -5,30 +5,25 @@ import { CafeForm } from '../../components/cafe/CafeForm'
 import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog'
 import { createFileRoute } from '@tanstack/react-router'
 import { createCafe } from '../../api/cafeApi'
+import { CreateCafeRequest } from '../../types/Cafe'
 
-interface Cafe {
-  name: string;
-  description: string;
-  location: string;
-  logo?: string;
-  _logoFile?: File; // Actual file object
-}
 
-const validate = (values: Cafe): FormErrors<Cafe> => {
-  const errors: FormErrors<Cafe> = {}
+
+const validate = (values: CreateCafeRequest): FormErrors<CreateCafeRequest> => {
+  const errors: FormErrors<CreateCafeRequest> = {}
   if (!values.name) errors.name = 'Required'
   if (!values.description) errors.description = 'Required'
   if (!values.location) errors.location = 'Required'
   return errors
 }
 
-interface AddCafeFormProps extends InjectedFormProps<Cafe> { }
+interface AddCafeFormProps extends InjectedFormProps<CreateCafeRequest> { }
 
 const AddCafeForm: React.FC<AddCafeFormProps> = ({ handleSubmit, submitting }) => {
   const navigate = useNavigate()
   const [openModal, setOpenModal] = useState(false)
 
-  const onSubmit = useCallback(async (values: Cafe) => {
+  const onSubmit = useCallback(async (values: CreateCafeRequest) => {
     // Implement form submission logic (POST to API)
     await createCafe(values)
     console.log('Form submitted with values:', values);
@@ -60,7 +55,7 @@ const AddCafeForm: React.FC<AddCafeFormProps> = ({ handleSubmit, submitting }) =
   )
 }
 
-const AddCafeFormRedux = reduxForm<Cafe>({
+const AddCafeFormRedux = reduxForm<CreateCafeRequest>({
   form: 'addCafe',
   validate
 })(AddCafeForm)

@@ -51,9 +51,6 @@ const GetCafeResponse: React.FC = React.memo(() => {
     const confirmDelete = useCallback(async () => {
         if (deleteConfirmation.cafeId) {
             try {
-                console.log('Deleting cafe:', deleteConfirmation.cafeId)
-                // TODO: Implement actual delete functionality
-
                 await deleteCafe(deleteConfirmation.cafeId)
                 queryClient.invalidateQueries({ queryKey: ['cafes', searchTerm] })
                 window.location.reload()

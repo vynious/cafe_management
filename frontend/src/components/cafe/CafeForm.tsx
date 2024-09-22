@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Field, FormProps } from 'redux-form'
 import { Button, Box, Typography, Container, Paper } from '@mui/material'
 import { RenderField } from '../RenderField'
@@ -10,7 +10,7 @@ interface CafeFormProps extends FormProps<CreateCafeRequest, any, any> {
     submitting: boolean;
     onCancel: () => void;
     submitButtonText: string;
-    initialValues?: Partial<CreateCafeRequest>; // Include initialValues in props for clarity
+    initialValues?: Partial<CreateCafeRequest>; 
 }
 
 export const CafeForm: React.FC<CafeFormProps> = (props) => {

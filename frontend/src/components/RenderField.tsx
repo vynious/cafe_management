@@ -23,9 +23,9 @@ export const RenderField: React.FC<RenderFieldProps> = ({
         if (file) {
             if (file.size > MAX_FILE_SIZE) {
                 alert(`File size should not exceed ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
-                return; // Exit early
+                return;
             }
-            input.onChange(file); // Redux Form onChange
+            input.onChange(file); 
             const reader = new FileReader();
             reader.onloadend = () => setPreview(reader.result as string);
             reader.readAsDataURL(file);
@@ -42,7 +42,7 @@ export const RenderField: React.FC<RenderFieldProps> = ({
                     style={{ display: 'none' }}
                     id={input.name}
                     onChange={handleChange}
-                    value="" // prevent controlled/uncontrolled component issue
+                    value=""
                 />
                 <label htmlFor={input.name}>
                     <Button variant="contained" component="span">

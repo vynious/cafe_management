@@ -9,7 +9,6 @@ export const Route = createRootRoute({
     component: () => (
         <QueryClientProvider client={queryClient}>
             <div>
-                {/* You can add a layout component here if needed */}
                 <Outlet />
             </div>
         </QueryClientProvider>

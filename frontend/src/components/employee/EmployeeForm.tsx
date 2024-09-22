@@ -5,6 +5,7 @@ import { ReusableTextbox } from '../Textbox'
 import type { CreateEmployeeFormData } from '../../types/Employee'
 import { useCafeData } from '../../hooks/useCafeData'
 import { GetCafeResponse } from '../../types/Cafe'
+import { emailValidation, maxLength10, minLength6, phoneNumberValidation } from '../../utils/validation'
 
 interface EmployeeFormProps extends FormProps<CreateEmployeeFormData, any, any> {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -102,17 +103,4 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = (props) => {
     );
 };
 
-// Validation functions (to be implemented)
-const minLength6 = (value: string) =>
-    value && value.length < 6 ? 'Must be at least 6 characters' : undefined;
 
-const maxLength10 = (value: string) =>
-    value && value.length > 10 ? 'Must be 10 characters or less' : undefined;
-
-const emailValidation = (value: string) =>
-    // Implement email validation logic
-    undefined;
-
-const phoneNumberValidation = (value: string) =>
-    // Implement phone number validation logic (SG phone number, starts with 8 or 9, and have 8 digits)
-    undefined;

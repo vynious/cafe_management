@@ -1,11 +1,11 @@
 import React from 'react';
 import { ColDef } from 'ag-grid-community';
 import type { GetCafeResponse } from '../../types/Cafe';
-import { Button, Box, Link, Tooltip } from '@mui/material';
+import { Box, Link, Tooltip } from '@mui/material';
 import { Link as TanstackLink } from '@tanstack/react-router';
 import Table from '../Table';
 import ActionButtons from '../ActionButtons';
-
+import TooltipCell from '../Tooltip';
 
 interface CafeTableProps {
     data: GetCafeResponse[];
@@ -41,11 +41,6 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
 );
 
 const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe }) => {
-    const createTooltipRenderer = (field: keyof GetCafeResponse) => (params: any) => (
-        <Tooltip title={params.value}>
-            <span>{params.value}</span>
-        </Tooltip>
-    );
     console.log(data)
     const columnDefs: ColDef<GetCafeResponse>[] = [
         {
@@ -68,10 +63,10 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
             sortable: false,
             filter: false,
         },
-        { field: 'id', headerName: 'ID', width: 70, cellRenderer: createTooltipRenderer('id') },
-        { field: 'name', headerName: 'Cafe Name', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('name') },
-        { field: 'location', headerName: 'Location', flex: 1, minWidth: 120, cellRenderer: createTooltipRenderer('location') },
-        { field: 'description', headerName: 'Description', flex: 2, minWidth: 200, cellRenderer: createTooltipRenderer('description') },
+        { field: 'id', headerName: 'ID', width: 70, cellRenderer: TooltipCell },
+        { field: 'name', headerName: 'Cafe Name', flex: 1, minWidth: 150, cellRenderer: TooltipCell },
+        { field: 'location', headerName: 'Location', flex: 1, minWidth: 120, cellRenderer: TooltipCell },
+        { field: 'description', headerName: 'Description', flex: 2, minWidth: 200, cellRenderer: TooltipCell },
         {
             headerName: 'Employees',
             width: 150,

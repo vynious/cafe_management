@@ -9,10 +9,10 @@ import { CreateEmployeeRequest, FlattenedGetEmployeeAssignmentResponse } from '.
 
 const validate = (values: FlattenedGetEmployeeAssignmentResponse): FormErrors<FlattenedGetEmployeeAssignmentResponse> => {
   const errors: FormErrors<FlattenedGetEmployeeAssignmentResponse> = {};
-  // Add validation rules here
-  // Example:
-  // if (!values.name) errors.name = 'Required';
-  // if (!values.email) errors.email = 'Required';
+  if (!values.employeeName) errors.employeeName = 'Required';
+  if (!values.employeeEmail) errors.employeeEmail = 'Required';
+  if (!values.employeeGender) errors.employeeGender = 'Required';
+  if (!values.employeePhoneNumber) errors.employeePhoneNumber = 'Required';
   return errors;
 };
 

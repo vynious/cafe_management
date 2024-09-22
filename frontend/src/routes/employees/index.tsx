@@ -64,7 +64,8 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
       try {
         console.log('Deleting employee:', deleteConfirmation.employeeId)
         await deleteEmployee(deleteConfirmation.employeeId)
-        // Invalidate and refetch
+        
+        // invalidate and refetch
         queryClient.invalidateQueries({ queryKey: ['employees', searchTerm] })
         window.location.reload()
       } catch (error) {

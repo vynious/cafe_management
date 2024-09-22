@@ -6,26 +6,17 @@ import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
 import { getCafeById, updateCafe } from '../../api/cafeApi';
 import { createFileRoute } from '@tanstack/react-router';
 import { CreateCafeRequest, EditCafeRequest } from '../../types/Cafe';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-// Define the Cafe interface for form values
-interface Cafe {
-  name: string;
-  description: string;
-  location: string;
-  logo?: string;
-  _logoFile?: File;
-}
-
-const validate = (values: Cafe): FormErrors<Cafe> => {
-  const errors: FormErrors<Cafe> = {};
+const validate = (values: CreateCafeRequest): FormErrors<CreateCafeRequest> => {
+  const errors: FormErrors<CreateCafeRequest> = {};
   if (!values.name) errors.name = 'Required';
   if (!values.description) errors.description = 'Required';
   if (!values.location) errors.location = 'Required';
   return errors;
 };
 
-interface EditCafeFormProps extends InjectedFormProps<Cafe> { }
+interface EditCafeFormProps extends InjectedFormProps<CreateCafeRequest> { }
 
 const EditCafeForm: React.FC<EditCafeFormProps> = (props) => {
   const navigate = useNavigate();
@@ -96,7 +87,7 @@ const EditCafeFormRedux = reduxForm<CreateCafeRequest>({
 
 const EditCafePage: React.FC = () => {
   const { id } = useParams({ from: '/cafes/edit/$id' });
-  const [initialValues, setInitialValues] = useState<Cafe | undefined>(undefined);
+  const [initialValues, setInitialValues] = useState<CreateCafeRequest | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
