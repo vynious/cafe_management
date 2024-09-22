@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { ThemeProvider } from '@mui/material/styles'
+import { useQueryClient } from '@tanstack/react-query'
 import {
     Button,
     TextField,
@@ -22,6 +23,7 @@ import theme from '../../theme'
 
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
+import { deleteCafe } from '../../api/cafeApi'
 
 const GetCafeResponse: React.FC = React.memo(() => {
     const [locationQuery, setLocationQuery] = useState('')
@@ -30,6 +32,8 @@ const GetCafeResponse: React.FC = React.memo(() => {
         isOpen: false,
         cafeId: null as string | null,
     })
+    const queryClient = useQueryClient()
+
     const navigate = useNavigate()
     const { data, isLoading, isError, error } = useCafeData({ location: searchTerm })
 
@@ -50,7 +54,10 @@ const GetCafeResponse: React.FC = React.memo(() => {
             try {
                 console.log('Deleting cafe:', deleteConfirmation.cafeId)
                 // TODO: Implement actual delete functionality
-                alert('Cafe deleted successfully')
+                
+                await deleteCafe(deleteConfirmation.cafeId)
+                queryClient.invalidateQueries({ queryKey: ['cafes', searchTerm] })
+                window.location.reload()
             } catch (error) {
                 alert('Failed to delete cafe')
             }

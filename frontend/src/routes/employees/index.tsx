@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { createFileRoute, Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { ThemeProvider } from '@mui/material/styles'
+import { useQueryClient } from '@tanstack/react-query'
 import {
   Button,
   TextField,
@@ -23,6 +24,7 @@ import theme from '../../theme'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { flattenEmployeeData } from '../../utils/flatten'
+import { deleteEmployee } from '../../api/employeeApi'
 
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
@@ -33,6 +35,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
     isOpen: false,
     employeeId: null as string | null,
   })
+  const queryClient = useQueryClient()
   const navigate = useNavigate()
   const { data: rawData, isLoading, isError, error } = useEmployeeData({ cafe: searchTerm })
   
@@ -42,7 +45,6 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
       return flattenEmployeeData(employee)
     });
   }, [rawData]);
-
   console.log(data)
 
   const handleEditEmployee = useCallback((flattenEmployeeData: FlattenedGetEmployeeAssignmentResponse) => {
@@ -56,18 +58,21 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
     setDeleteConfirmation({ isOpen: true, employeeId })
   }, [])
 
+
   const confirmDelete = useCallback(async () => {
     if (deleteConfirmation.employeeId) {
       try {
         console.log('Deleting employee:', deleteConfirmation.employeeId)
-        // TODO: Implement actual delete functionality
-        alert('Employee deleted successfully')
+        await deleteEmployee(deleteConfirmation.employeeId)
+        // Invalidate and refetch
+        queryClient.invalidateQueries({ queryKey: ['employees', searchTerm] })
+        window.location.reload()
       } catch (error) {
         alert('Failed to delete employee')
       }
     }
     setDeleteConfirmation({ isOpen: false, employeeId: null })
-  }, [deleteConfirmation.employeeId])
+  }, [deleteConfirmation.employeeId, queryClient, searchTerm])
 
   const handleSearchSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -137,7 +142,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
           isOpen={deleteConfirmation.isOpen}
           onClose={() => setDeleteConfirmation({ isOpen: false, employeeId: null })}
           onConfirm={confirmDelete}
-          itemName={data?.find((employee) => employee.id === deleteConfirmation.employeeId)?.employeeName || 'this employee'}
+          itemName={data?.find((employee) => employee.employeeId === deleteConfirmation.employeeId)?.employeeName || 'this employee'}
         />
       </Container>
     </ThemeProvider>

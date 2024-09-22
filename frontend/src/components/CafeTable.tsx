@@ -59,21 +59,24 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
             <span>{params.value}</span>
         </Tooltip>
     );
-
+    console.log(data)
     const columnDefs: ColDef<GetCafeResponse>[] = [
         {
             field: 'logo',
             headerName: '',
-            cellRenderer: (params: { value: string }) => (
-                <Tooltip title="Cafe Logo">
-                    <img
-                        src={params.value}
-                        alt="Cafe logo"
-                        className="cafe-logo"
-                        style={{ width: '40px', height: '40px', objectFit: 'contain' }}
-                    />
-                </Tooltip>
-            ),
+            cellRenderer: (params: { data: GetCafeResponse }) => {
+                console.log('Logo value:', params.data.logo);
+                return (
+                    <Tooltip title="Cafe Logo">
+                        <img
+                            src={params.data.logo}
+                            alt="Cafe logo"
+                            className="cafe-logo"
+                            style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+                        />
+                    </Tooltip>
+                );
+            },
             width: 60,
             sortable: false,
             filter: false,

@@ -19,7 +19,7 @@ const ActionButtons: React.FC<{
         <Button variant="contained" color="primary" onClick={() => onEdit(employee)} sx={{ mr: 1 }}>
             Edit
         </Button>
-        <Button variant="contained" color="error" onClick={() => onDelete(employee.id)}>
+        <Button variant="contained" color="error" onClick={() => onDelete(employee.employeeId)}>
             Delete
         </Button>
     </Box>

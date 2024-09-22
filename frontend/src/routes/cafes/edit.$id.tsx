@@ -54,7 +54,6 @@ const EditCafeForm: React.FC<EditCafeFormProps> = (props) => {
     navigate({ to: '/cafes' });
   }, [navigate]);
 
-  console.log(23, props)
   const formProps = useMemo(
     () => ({
       onCancel: handleCancel,
@@ -112,9 +111,7 @@ const EditCafePage: React.FC = () => {
     } else {
       setLoading(false);
     }
-  }, [id]);
-
-  console.log("Rendering EditCafePage, initialValues:", initialValues);
+  }, [id])
 
   return <EditCafeFormRedux initialValues={initialValues} />;
 };

@@ -1,6 +1,5 @@
 import { FlattenedGetEmployeeAssignmentResponse, GetEmployeeAssignmentResponse } from "../types/Employee";
 export const flattenEmployeeData = (from: GetEmployeeAssignmentResponse): FlattenedGetEmployeeAssignmentResponse => {
-    console.log(from)
     return {
         id: from.id,
         employeeId: from.employee.id, // Changed from employeeId to id

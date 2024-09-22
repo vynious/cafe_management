@@ -7,7 +7,6 @@ export const useEmployeeData = (params: {cafe: string}) => {
         queryKey,
         queryFn: () => getEmployees(params.cafe)
     })
-    console.log(result.data)
     return {
         ...result, 
         data: result.data || [],

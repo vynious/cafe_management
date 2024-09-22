@@ -5,7 +5,7 @@ import { EmployeeForm } from '../../components/EmployeeForm';
 import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
 import { getEmployeeAssignment, updateEmployee } from '../../api/employeeApi';
 import { createFileRoute } from '@tanstack/react-router';
-import { FlattenedGetEmployeeAssignmentResponse, GetEmployeeResponse } from '../../types/Employee';
+import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
 import { flattenEmployeeData } from '../../utils/flatten';
 
 
@@ -23,7 +23,6 @@ interface EditEmployeeFormProps extends InjectedFormProps<FlattenedGetEmployeeAs
 const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
   const navigate = useNavigate();
   const { id } = useParams({ from: '/employees/edit/$id' });
-  console.log("params",id)
   const [openModal, setOpenModal] = useState(false);
 
   const onSubmit = useCallback(
@@ -33,6 +32,7 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
         return;
       }
       try {
+        console.log(values)
         await updateEmployee(id, values);
         navigate({ to: '/employees' });
       } catch (error) {
@@ -88,10 +88,8 @@ const EditEmployeePage: React.FC = () => {
       const fetchEmployee = async () => {
         try {
           const employeeData = await getEmployeeAssignment(id);
-          console.log(employeeData)
           if (employeeData) {
             const flattenData = flattenEmployeeData(employeeData)
-            console.log(flattenData)
             setInitialValues(flattenData);
           } else {
             console.error('No employee data returned');

@@ -42,7 +42,6 @@ const Dropdown: React.FC<WrappedFieldProps & { label: string, cafes: GetCafeResp
     </FormControl>
 );
 export const EmployeeForm: React.FC<EmployeeFormProps> = (props) => {
-    console.log(props.initialValues)
     const { data: cafes, isLoading, error } = useCafeData({location:""});
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;

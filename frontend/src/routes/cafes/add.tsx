@@ -4,6 +4,7 @@ import { useNavigate } from '@tanstack/react-router'
 import { CafeForm } from '../../components/CafeForm'
 import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog'
 import { createFileRoute } from '@tanstack/react-router'
+import { createCafe } from '../../api/cafeApi'
 
 interface Cafe {
   name: string;
@@ -27,8 +28,9 @@ const AddCafeForm: React.FC<AddCafeFormProps> = ({ handleSubmit, submitting }) =
   const navigate = useNavigate()
   const [openModal, setOpenModal] = useState(false)
 
-  const onSubmit = useCallback((values: Cafe) => {
+  const onSubmit = useCallback(async (values: Cafe) => {
     // Implement form submission logic (POST to API)
+    await createCafe(values)
     console.log('Form submitted with values:', values);
     navigate({ to: '/cafes' });
   }, [navigate])

@@ -14,11 +14,6 @@ interface CafeFormProps extends FormProps<CreateCafeRequest, any, any> {
 }
 
 export const CafeForm: React.FC<CafeFormProps> = (props) => {
-    console.log('CafeForm rendering, props:', props);
-
-    useEffect(() => {
-        console.log('CafeForm received new props:', props);
-    }, [props]);
 
     return (
         <Container maxWidth="sm">
