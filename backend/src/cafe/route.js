@@ -6,7 +6,6 @@ import { handleLogoUpload } from '../middlware/upload.js';
 const cafeRouter = express.Router();
 const cafeController = new CafeController();
 
-// SETTLED
 // route to get all cafes or by location
 // The response of this endpoint should be the below and sorted by the highest number of
 // employees first
@@ -16,12 +15,10 @@ const cafeController = new CafeController();
 cafeRouter.get('/cafes', cafeController.getAllCafes)
 
 
-// SETTLED
 // route to create a new cafe
 // checks if logo is included in the request body
 cafeRouter.post('/cafe', handleLogoUpload, cafeController.createCafe);
 
-// SETTLED
 // route to update cafe by id
 cafeRouter.put('/cafe', handleLogoUpload, cafeController.updateCafe);
 

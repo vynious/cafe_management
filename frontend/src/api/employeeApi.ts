@@ -41,8 +41,7 @@ export const updateEmployee = async (id: string, employeeData: FlattenedGetEmplo
             personalData: personalData,
             assignmentData: assignmentData
         }
-    }  
-    console.log(reqBody)
+    }
 
     const response = await axios.put(EMPLOYEE_API_URL, reqBody)
     return response.data;

@@ -1,11 +1,9 @@
 import React from 'react';
 import { ColDef } from 'ag-grid-community';
-import { Tooltip } from '@mui/material';
 import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
 import Table from '../shared/Table';
 import ActionButtons from '../shared/ActionButtons';
 import TooltipCell from '../shared/Tooltip';
-import TopBar from '../../components/shared/TopBar';
 
 
 interface EmployeeTableProps {
