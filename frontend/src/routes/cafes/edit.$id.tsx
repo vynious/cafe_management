@@ -95,7 +95,6 @@ const EditCafePage: React.FC = () => {
       const fetchCafe = async () => {
         try {
           const cafeData = await getCafeById(id);
-          console.log("Fetched cafe data:", cafeData);
           if (cafeData) {
             setInitialValues(cafeData);
           } else {
