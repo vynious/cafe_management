@@ -73,6 +73,13 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
         { field: 'location', headerName: 'Location', flex: 1, minWidth: 120, cellRenderer: createTooltipRenderer('location') },
         { field: 'description', headerName: 'Description', flex: 2, minWidth: 200, cellRenderer: createTooltipRenderer('description') },
         {
+            headerName: 'Employees',
+            width: 150,
+            cellRenderer: (params: { data: GetCafeResponse }) => (
+                <EmployeesLink cafe={params.data} />
+            ),
+        },
+        {
             headerName: 'Actions',
             cellRenderer: (params: { data: GetCafeResponse }) => (
                 <ActionButtons
