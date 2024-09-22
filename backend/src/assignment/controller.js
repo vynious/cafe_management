@@ -66,7 +66,6 @@ export default class AssignmentController {
                 // all employees 
                 assignmentRecords = await this.assignmentService.getAllAssignments();
             }
-            console.log(assignmentRecords)
             // parse the employment records to calculate total days worked
             parsedAssignments = await this._parseAssignmentRecords(assignmentRecords);
             res.json(parsedAssignments)
@@ -78,7 +77,6 @@ export default class AssignmentController {
     // parse assignment records 
     async _parseAssignmentRecords(assignmentRecords) {
         return Promise.all(assignmentRecords.map(async record => {
-            console.log(record)
             const { id, employee, startDate, endDate, cafe } = record;
             return {
                 id: id,

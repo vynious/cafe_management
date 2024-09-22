@@ -74,7 +74,6 @@ const EditEmployeeFormRedux = reduxForm<FlattenedGetEmployeeAssignmentResponse>(
 const EditEmployeePage: React.FC = () => {
   const { id } = useParams({ from: '/employees/edit/$id' });
   const [initialValues, setInitialValues] = useState<FlattenedGetEmployeeAssignmentResponse | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id) {
@@ -89,13 +88,9 @@ const EditEmployeePage: React.FC = () => {
           }
         } catch (error) {
           console.error('Failed to fetch employee data:', error);
-        } finally {
-          setLoading(false);
         }
       };
       fetchEmployee();
-    } else {
-      setLoading(false);
     }
   }, [id]);
 
