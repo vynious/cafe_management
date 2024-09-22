@@ -41,7 +41,6 @@ const GetCafeResponse: React.FC = React.memo(() => {
         navigate({
             to: '/cafes/edit/$id',
             params: { id: cafe.id },
-            search: { cafeData: JSON.stringify(cafe) }
         })
     }, [navigate])
 
