@@ -35,16 +35,29 @@ export default class CafeController {
             next(error);
         }
     }
-
     // Endpoint to create a new cafe
     async createCafe(req, res, next) {
         try {
-            // validation for required fields
             const { location, name, description } = req.body;
+
+            // Validation for required fields
             if (!location || !name || !description) {
                 return res.status(400).json({ error: 'Location, name, and description are required' });
             }
-            const cafe = await this.cafeService.createCafe(location, name, description);
+
+            let logo = null;
+
+            // chcek if a file was uploaded
+            if (req.file) {
+                const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                if (!allowedTypes.includes(req.file.mimetype)) {
+                    return res.status(400).json({ error: 'Only PNG and JPEG images are allowed' });
+                }
+                // use the filename provided by multer
+                logo = req.file.filename;
+            }
+
+            const cafe = await this.cafeService.createCafe(location, name, description, logo);
             res.json(cafe);
         } catch (error) {
             console.error('Error creating cafe', error);
@@ -55,14 +68,29 @@ export default class CafeController {
     // Endpoint to update a cafe by id
     async updateCafe(req, res, next) {
         try {
-            const { cafeId, updateCafeData } = req.body
-            if (!cafeId || !updateCafeData) {
-                return res.status(400).json({ error: 'Cafe ID and updated cafe data are required' });
+            const { cafeId, name, location, description } = req.body;
+            const updateCafeData = {};
+            if (name) updateCafeData.name = name;
+            if (location) updateCafeData.location = location;
+            if (description) updateCafeData.description = description;
+
+            // Handle logo update if a file was uploaded
+            if (req.file) {
+                const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                if (!allowedTypes.includes(req.file.mimetype)) {
+                    return res.status(400).json({ error: 'Only PNG and JPEG images are allowed' });
+                }
+                updateCafeData.logo = req.file.filename;
             }
+
+            if (!cafeId || Object.keys(updateCafeData).length === 0) {
+                return res.status(400).json({ error: 'Cafe ID and at least one field to update are required' });
+            }
+
             const updatedCafe = await this.cafeService.updateCafe(cafeId, updateCafeData);
             res.json(updatedCafe);
         } catch (error) {
-            console.error(`Error updating cafe by id: ${req.params.id}`, error);
+            console.error(`Error updating cafe`, error);
             next(error);
         }
     }

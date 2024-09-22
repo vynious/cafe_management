@@ -46,7 +46,8 @@ export default class assignmentService {
                 employeeId: employeeId,
             },
             include: {
-                cafe: true
+                cafe: true,
+                employee: true
             }, 
         });
     }

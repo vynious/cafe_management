@@ -6,9 +6,10 @@ RUN npm install -g prisma nodemon
 
 COPY package*.json ./
 
+COPY . .
+
 RUN npm install
 
-COPY . .
 
 RUN npx prisma generate
 

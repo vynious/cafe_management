@@ -3,13 +3,25 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/dockerfile
     ports:
       - "3000:3000"
     environment:
       - DATABASE_URL=mysql://root:root@db:3306/cafedb
     depends_on:
       - db
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
     networks:
       - app-network
     restart: unless-stopped
@@ -22,7 +34,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     ports:
-      - "3306:3306" 
+      - "3307:3306" 
     networks:
       - app-network
 
