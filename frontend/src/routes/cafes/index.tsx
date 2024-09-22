@@ -24,6 +24,7 @@ import theme from '../../theme'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { deleteCafe } from '../../api/cafeApi'
+import TopBar from '../../components/shared/TopBar'
 
 const GetCafeResponse: React.FC = React.memo(() => {
     const [locationQuery, setLocationQuery] = useState('')
@@ -59,7 +60,7 @@ const GetCafeResponse: React.FC = React.memo(() => {
             }
         }
         setDeleteConfirmation({ isOpen: false, cafeId: null })
-    }, [deleteConfirmation.cafeId])
+    }, [deleteConfirmation.cafeId, queryClient, searchTerm])
 
     const handleSearchSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -73,11 +74,11 @@ const GetCafeResponse: React.FC = React.memo(() => {
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="lg" className="cafe-list-container">
-                <Typography variant="h4" component="h1" className="cafe-list-title" gutterBottom>
-                    Cafe Explorer
-                </Typography>
-
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+                <TopBar currentPath="/cafes" />
+                <Box sx={{ mt: 2, mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography variant="h5" component="h1" className="cafe-list-title">
+                        Cafe Explorer
+                    </Typography>
                     <Button
                         component={Link}
                         to="/cafes/add"

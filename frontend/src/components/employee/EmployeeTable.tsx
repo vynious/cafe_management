@@ -5,6 +5,7 @@ import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
 import Table from '../shared/Table';
 import ActionButtons from '../shared/ActionButtons';
 import TooltipCell from '../shared/Tooltip';
+import TopBar from '../../components/shared/TopBar';
 
 
 interface EmployeeTableProps {

@@ -14,7 +14,7 @@ import AddIcon from '@mui/icons-material/Add'
 import SearchIcon from '@mui/icons-material/Search'
 
 import { useEmployeeData } from '../../hooks/useEmployeeData'
-import type { GetEmployeeResponse, FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee'
+import type { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee'
 import LoadingComponent from '../../components/shared/LoadingComponent'
 import ErrorComponent from '../../components/shared/ErrorComponent'
 import EmployeeTable from '../../components/employee/EmployeeTable'
@@ -25,7 +25,7 @@ import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { flattenEmployeeData } from '../../utils/flatten'
 import { deleteEmployee } from '../../api/employeeApi'
-
+import TopBar from '../../components/shared/TopBar'
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
   const { cafe: initialCafeName } = useSearch({ from: '/employees/' })
@@ -41,11 +41,8 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
 
   const data = React.useMemo(() => {
     if (!rawData) return null;
-    return rawData.map(employee => {
-      return flattenEmployeeData(employee)
-    });
+    return rawData.map(employee => flattenEmployeeData(employee));
   }, [rawData]);
-  console.log(data)
 
   const handleEditEmployee = useCallback((flattenEmployeeData: FlattenedGetEmployeeAssignmentResponse) => {
     navigate({
@@ -58,12 +55,10 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
     setDeleteConfirmation({ isOpen: true, employeeId })
   }, [])
 
-
   const confirmDelete = useCallback(async () => {
     if (deleteConfirmation.employeeId) {
       try {
         await deleteEmployee(deleteConfirmation.employeeId)
-        // invalidate and refetch
         queryClient.invalidateQueries({ queryKey: ['employees', searchTerm] })
         window.location.reload()
       } catch (error) {
@@ -85,11 +80,11 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg" className="employee-list-container">
-        <Typography variant="h4" component="h1" className="employee-list-title" gutterBottom>
-          Employee Explorer
-        </Typography>
-
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+        <TopBar currentPath="/employees" />
+        <Box sx={{ mt: 2, mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h5" component="h1" className="employee-list-title">
+            Employee Explorer
+          </Typography>
           <Button
             component={Link}
             to="/employees/add"

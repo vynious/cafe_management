@@ -17,7 +17,7 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
     <TanstackLink
         to="/employees"
         search={{ cafe: cafe.name }}
-        style={{ textDecoration: 'none', display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}
+        style={{ textDecoration: 'none', display: 'block', width: '100%', height: '100%' }}
     >
         <Box
             sx={{
@@ -26,15 +26,15 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
                 justifyContent: 'center',
                 height: '100%',
                 width: '100%',
+                padding: '4px',
                 '&:hover': {
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                    cursor: 'pointer'
                 }
             }}
         >
             <span role="img" aria-label="View employees" style={{ marginRight: '4px' }}>👥</span>
-            <Link component="span" variant="body2">
-                {`${cafe._count?.employees} employee${cafe._count?.employees !== 1 ? '' : ''}`}
+            <Link component="span" variant="body2" sx={{ cursor: 'pointer' }}>
+                View Employees
             </Link>
         </Box>
     </TanstackLink>
