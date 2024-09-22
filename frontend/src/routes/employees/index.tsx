@@ -17,7 +17,7 @@ import { useEmployeeData } from '../../hooks/useEmployeeData'
 import type { GetEmployeeResponse, FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee'
 import LoadingComponent from '../../components/LoadingComponent'
 import ErrorComponent from '../../components/ErrorComponent'
-import EmployeeTable from '../../components/EmployeeTable'
+import EmployeeTable from '../../components/employee/EmployeeTable'
 import DeleteConfirmation from '../../components/DeleteConfirmation'
 import theme from '../../theme'
 
@@ -38,7 +38,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const { data: rawData, isLoading, isError, error } = useEmployeeData({ cafe: searchTerm })
-  
+
   const data = React.useMemo(() => {
     if (!rawData) return null;
     return rawData.map(employee => {

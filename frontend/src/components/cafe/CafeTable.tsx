@@ -1,9 +1,11 @@
 import React from 'react';
 import { ColDef } from 'ag-grid-community';
-import type { GetCafeResponse } from '../types/Cafe';
-import { Button, Box, Link , Tooltip } from '@mui/material';
+import type { GetCafeResponse } from '../../types/Cafe';
+import { Button, Box, Link, Tooltip } from '@mui/material';
 import { Link as TanstackLink } from '@tanstack/react-router';
-import Table from './Table';
+import Table from '../Table';
+import ActionButtons from '../ActionButtons';
+
 
 interface CafeTableProps {
     data: GetCafeResponse[];
@@ -38,21 +40,6 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
     </TanstackLink>
 );
 
-const ActionButtons: React.FC<{
-    cafe: GetCafeResponse;
-    onEdit: (cafe: GetCafeResponse) => void;
-    onDelete: (cafeId: string) => void;
-}> = ({ cafe, onEdit, onDelete }) => (
-    <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
-        <Button variant="contained" color="primary" onClick={() => onEdit(cafe)} sx={{ mr: 1 }}>
-            Edit
-        </Button>
-        <Button variant="contained" color="error" onClick={() => onDelete(cafe.id)}>
-            Delete
-        </Button>
-    </Box>
-);
-
 const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe }) => {
     const createTooltipRenderer = (field: keyof GetCafeResponse) => (params: any) => (
         <Tooltip title={params.value}>
@@ -69,7 +56,7 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
                 return (
                     <Tooltip title="Cafe Logo">
                         <img
-                            src={params.data.logo}
+                            src={`${import.meta.env.VITE_BACKEND_URL}/cafe_logos/${params.data.logo}`}
                             alt="Cafe logo"
                             className="cafe-logo"
                             style={{ width: '40px', height: '40px', objectFit: 'contain' }}
@@ -86,16 +73,14 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
         { field: 'location', headerName: 'Location', flex: 1, minWidth: 120, cellRenderer: createTooltipRenderer('location') },
         { field: 'description', headerName: 'Description', flex: 2, minWidth: 200, cellRenderer: createTooltipRenderer('description') },
         {
-            headerName: 'Employees',
-            width: 150,
-            cellRenderer: (params: { data: GetCafeResponse }) => (
-                <EmployeesLink cafe={params.data} />
-            ),
-        },
-        {
             headerName: 'Actions',
             cellRenderer: (params: { data: GetCafeResponse }) => (
-                <ActionButtons cafe={params.data} onEdit={onEditCafe} onDelete={onDeleteCafe} />
+                <ActionButtons
+                    item={params.data}
+                    onEdit={onEditCafe}
+                    onDelete={onDeleteCafe}
+                    idField="id"
+                />
             ),
             sortable: false,
             filter: false,

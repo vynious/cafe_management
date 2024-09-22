@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Field, FormProps } from 'redux-form'
 import { Button, Box, Typography, Container, Paper } from '@mui/material'
-import { RenderField } from './RenderField'
-import { ReusableTextbox } from './Textbox'
-import type { CreateCafeRequest } from '../types/Cafe'
+import { RenderField } from '../RenderField'
+import { ReusableTextbox } from '../Textbox'
+import type { CreateCafeRequest } from '../../types/Cafe'
 
 interface CafeFormProps extends FormProps<CreateCafeRequest, any, any> {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

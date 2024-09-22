@@ -1,29 +1,16 @@
 import React from 'react';
 import { ColDef } from 'ag-grid-community';
-import { Button, Box, Tooltip } from '@mui/material';
-import { FlattenedGetEmployeeAssignmentResponse } from '../types/Employee';
-import Table from './Table';
+import { Tooltip } from '@mui/material';
+import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
+import Table from '../Table';
+import ActionButtons from '../ActionButtons';
+
 
 interface EmployeeTableProps {
     data: FlattenedGetEmployeeAssignmentResponse[] | null;
     onEditEmployee: (employee: FlattenedGetEmployeeAssignmentResponse) => void;
     onDeleteEmployee: (employeeId: string) => void;
 }
-
-const ActionButtons: React.FC<{
-    employee: FlattenedGetEmployeeAssignmentResponse;
-    onEdit: (employee: FlattenedGetEmployeeAssignmentResponse) => void;
-    onDelete: (employeeId: string) => void;
-}> = ({ employee, onEdit, onDelete }) => (
-    <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-        <Button variant="contained" color="primary" onClick={() => onEdit(employee)} sx={{ mr: 1 }}>
-            Edit
-        </Button>
-        <Button variant="contained" color="error" onClick={() => onDelete(employee.employeeId)}>
-            Delete
-        </Button>
-    </Box>
-);
 
 
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onDeleteEmployee }) => {
@@ -42,11 +29,12 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onD
         { field: 'cafeName', headerName: 'Cafe', flex: 1, minWidth: 150, cellRenderer: createTooltipRenderer('cafeName') },
         {
             headerName: 'Actions',
-            cellRenderer: (params: any) => (
+            cellRenderer: (params: { data: FlattenedGetEmployeeAssignmentResponse }) => (
                 <ActionButtons
-                    employee={params.data}
+                    item={params.data}
                     onEdit={onEditEmployee}
                     onDelete={onDeleteEmployee}
+                    idField="employeeId"
                 />
             ),
             sortable: false,

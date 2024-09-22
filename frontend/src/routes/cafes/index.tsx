@@ -17,7 +17,7 @@ import { useCafeData } from '../../hooks/useCafeData'
 import type { GetCafeResponse } from '../../types/Cafe'
 import LoadingComponent from '../../components/LoadingComponent'
 import ErrorComponent from '../../components/ErrorComponent'
-import CafeTable from '../../components/CafeTable'
+import CafeTable from '../../components/cafe/CafeTable'
 import DeleteConfirmation from '../../components/DeleteConfirmation'
 import theme from '../../theme'
 
@@ -53,7 +53,7 @@ const GetCafeResponse: React.FC = React.memo(() => {
             try {
                 console.log('Deleting cafe:', deleteConfirmation.cafeId)
                 // TODO: Implement actual delete functionality
-                
+
                 await deleteCafe(deleteConfirmation.cafeId)
                 queryClient.invalidateQueries({ queryKey: ['cafes', searchTerm] })
                 window.location.reload()
@@ -72,7 +72,7 @@ const GetCafeResponse: React.FC = React.memo(() => {
     }, [locationQuery, searchTerm]);
 
     if (isError) return <ErrorComponent error={error} />
-    
+
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="lg" className="cafe-list-container">

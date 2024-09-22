@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { reduxForm, FormErrors, InjectedFormProps } from 'redux-form';
 import { useNavigate, useParams } from '@tanstack/react-router';
-import { CafeForm } from '../../components/CafeForm';
+import { CafeForm } from '../../components/cafe/CafeForm';
 import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
 import { getCafeById, updateCafe } from '../../api/cafeApi';
 import { createFileRoute } from '@tanstack/react-router';
 import { CreateCafeRequest, EditCafeRequest } from '../../types/Cafe';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 // Define the Cafe interface for form values
 interface Cafe {
@@ -30,22 +31,30 @@ const EditCafeForm: React.FC<EditCafeFormProps> = (props) => {
   const navigate = useNavigate();
   const { id } = useParams({ from: '/cafes/edit/$id' });
   const [openModal, setOpenModal] = useState(false);
+  const queryClient = useQueryClient();
+
+
+  const { mutate: updateCafeMutation } = useMutation({
+    mutationFn: (values: EditCafeRequest) => updateCafe(id!, values),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['cafes'] });
+      queryClient.invalidateQueries({ queryKey: ['cafe', id] });
+      navigate({ to: '/cafes' });
+    },
+    onError: (error) => {
+      console.error('Failed to update cafe:', error);
+    },
+  });
 
   const onSubmit = useCallback(
-    async (values: EditCafeRequest) => {
+    (values: EditCafeRequest) => {
       if (!id) {
         console.error('No cafe ID provided');
         return;
       }
-      try {
-        console.log(values)
-        await updateCafe(id, values);
-        navigate({ to: '/cafes' });
-      } catch (error) {
-        console.error('Failed to update cafe:', error);
-      }
+      updateCafeMutation(values);
     },
-    [id, navigate]
+    [id, updateCafeMutation]
   );
 
   const handleCancel = useCallback(() => setOpenModal(true), []);

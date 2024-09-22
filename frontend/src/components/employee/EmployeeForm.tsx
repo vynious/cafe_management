@@ -1,10 +1,10 @@
 import React from 'react'
-import { Field, FormProps, WrappedFieldProps} from 'redux-form'
+import { Field, FormProps, WrappedFieldProps } from 'redux-form'
 import { Button, Box, Typography, Container, Paper, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Select, MenuItem } from '@mui/material'
-import { ReusableTextbox } from './Textbox'
-import type { CreateEmployeeFormData } from '../types/Employee'
-import { useCafeData } from '../hooks/useCafeData'
-import { GetCafeResponse } from '../types/Cafe'
+import { ReusableTextbox } from '../Textbox'
+import type { CreateEmployeeFormData } from '../../types/Employee'
+import { useCafeData } from '../../hooks/useCafeData'
+import { GetCafeResponse } from '../../types/Cafe'
 
 interface EmployeeFormProps extends FormProps<CreateEmployeeFormData, any, any> {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -42,7 +42,7 @@ const Dropdown: React.FC<WrappedFieldProps & { label: string, cafes: GetCafeResp
     </FormControl>
 );
 export const EmployeeForm: React.FC<EmployeeFormProps> = (props) => {
-    const { data: cafes, isLoading, error } = useCafeData({location:""});
+    const { data: cafes, isLoading, error } = useCafeData({ location: "" });
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
     if (!cafes) return <div>No cafe data found</div>;

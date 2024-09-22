@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { reduxForm, FormErrors, InjectedFormProps } from 'redux-form';
 import { useNavigate, useParams } from '@tanstack/react-router';
-import { EmployeeForm } from '../../components/EmployeeForm';
+import { EmployeeForm } from '../../components/employee/EmployeeForm';
 import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
 import { getEmployeeAssignment, updateEmployee } from '../../api/employeeApi';
 import { createFileRoute } from '@tanstack/react-router';
