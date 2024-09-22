@@ -23,7 +23,6 @@ const RadioButtonGroup: React.FC<WrappedFieldProps & { label: string }> = ({ inp
         <RadioGroup {...input} {...rest}>
             <FormControlLabel value="Male" control={<Radio />} label="Male" />
             <FormControlLabel value="Female" control={<Radio />} label="Female" />
-            <FormControlLabel value="Other" control={<Radio />} label="Other" />
         </RadioGroup>
     </FormControl>
 );
