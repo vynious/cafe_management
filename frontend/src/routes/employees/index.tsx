@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { createFileRoute, Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { ThemeProvider } from '@mui/material/styles'
 import { useQueryClient } from '@tanstack/react-query'
+
 import {
   Button,
   TextField,
@@ -28,9 +29,12 @@ import { deleteEmployee } from '../../api/employeeApi'
 import TopBar from '../../components/shared/TopBar'
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
-  const { cafe: initialCafeName } = useSearch({ from: '/employees/' })
-  const [cafeQuery, setCafeQuery] = useState(initialCafeName || '')
-  const [searchTerm, setSearchTerm] = useState(initialCafeName || '')
+  const { cafe: initialCafeName = '' } = useSearch({
+    from: '/employees/',
+    select: (search: { cafe?: string }) => search
+  })
+  const [cafeQuery, setCafeQuery] = useState(initialCafeName)
+  const [searchTerm, setSearchTerm] = useState(initialCafeName)
   const [deleteConfirmation, setDeleteConfirmation] = useState({
     isOpen: false,
     employeeId: null as string | null,

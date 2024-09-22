@@ -88,7 +88,6 @@ const EditCafeFormRedux = reduxForm<CreateCafeRequest>({
 const EditCafePage: React.FC = () => {
   const { id } = useParams({ from: '/cafes/edit/$id' });
   const [initialValues, setInitialValues] = useState<CreateCafeRequest | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id) {
@@ -102,13 +101,9 @@ const EditCafePage: React.FC = () => {
           }
         } catch (error) {
           console.error('Failed to fetch cafe data:', error);
-        } finally {
-          setLoading(false);
         }
       };
       fetchCafe();
-    } else {
-      setLoading(false);
     }
   }, [id])
 
