@@ -34,7 +34,6 @@ export const handleLogoUpload = (req, res, next) => {
             return res.status(500).json({ error: err.message });
         }
         if (req.file && req.body.name) {
-            console.log('Uploaded file:', req.file);
             const fileExtension = path.extname(req.file.originalname).toLowerCase();
             const newFileName = getLogoFileName(req.body.name, fileExtension);
             const oldPath = req.file.path;

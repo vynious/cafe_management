@@ -65,7 +65,7 @@ export default class ManagementController {
                 return res.status(400).json({ error: "Cafe ID is required" });
             }
             await this.managementService.deleteCafeAndRelatedAssociations(cafeId);
-            return res.status(200).json({ message: "Cafe and related associations deleted successfully" });
+            return res.status(204).send();
         } catch (error) {
             next(error);
         }

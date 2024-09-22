@@ -2,6 +2,7 @@ import assignment from "../assignment/service.js";
 import EmployeeService from "../employee/service.js";
 import CafeService from "../cafe/service.js";
 import { prisma_db } from "../../prisma/connection.js";
+import { generateEmployeeId } from "../utils/id-gen.js";
 
 export default class ManagementService {
     constructor() {
@@ -19,6 +20,7 @@ export default class ManagementService {
             const result = await this.prisma_db.$transaction(async (transaction) => {
                 // Create a new employee
                 const newEmployee = await transaction.employee.create({
+                    id: generateEmployeeId(),
                     data: newEmployeeData
                 });
 

@@ -34,7 +34,7 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
         >
             <span role="img" aria-label="View employees" style={{ marginRight: '4px' }}>👥</span>
             <Link component="span" variant="body2" sx={{ cursor: 'pointer' }}>
-                View Employees
+                {`${cafe._count?.employees} employee${cafe._count?.employees !== 1 ? '' : ''}`}
             </Link>
         </Box>
     </TanstackLink>

@@ -120,9 +120,6 @@ No specific endpoints defined in the provided `employee/route.js` file.
 
 The `seed_db.js` script in the `prisma` directory is used to populate the database with initial data. It reads from `seed_data.json` and creates cafes, employees, and random assignments.
 
-To run the seeding script manually:
-
-
 ## Project Structure
 
 - `src/`: Contains the main application code

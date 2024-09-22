@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Employee {
-  id           String       @id @default(uuid())
+  id           String       @id @db.Char(9)
   name         String
   gender       String
   email        String       @unique

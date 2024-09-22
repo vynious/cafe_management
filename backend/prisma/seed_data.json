@@ -1,246 +1,366 @@
 {
     "cafes": [
         {
-            "name": "Brew Haven",
+            "name": "Brew Hub",
             "location": "Bishan",
             "description": "Cozy spot for artisanal coffee",
-            "logo": "brew_haven.png"
+            "logo": "brew_hub.png"
         },
         {
-            "name": "Java Junction",
+            "name": "Java Jct",
             "location": "Ang Mo Kio",
             "description": "Rustic cafe with a modern twist",
-            "logo": "java_junction.png"
+            "logo": "java_jct.png"
         },
         {
-            "name": "Espresso Express",
+            "name": "Esp Xprs",
             "location": "Hougang",
             "description": "Quick service, premium coffee",
-            "logo": "espresso_express.png"
+            "logo": "esp_xprs.png"
         },
         {
-            "name": "The Grind House",
+            "name": "Grind Hse",
             "location": "Woodlands",
             "description": "Industrial chic coffee bar",
-            "logo": "grind_house.png"
+            "logo": "grind_hse.png"
         },
         {
-            "name": "Caffeine Corner",
+            "name": "Caf Cornr",
             "location": "Newton",
             "description": "Student-friendly study cafe",
-            "logo": "caffeine_corner.png"
+            "logo": "caf_cornr.png"
         },
         {
-            "name": "Roasted Bliss",
+            "name": "Rstd Blss",
             "location": "Novena",
             "description": "Specialty roasts and pastries",
-            "logo": "roasted_bliss.png"
+            "logo": "rstd_blss.png"
         },
         {
-            "name": "Latte Lounge",
+            "name": "Latte Lng",
             "location": "Bishan",
             "description": "Upscale coffee experience",
-            "logo": "latte_lounge.png"
+            "logo": "latte_lng.png"
         },
         {
-            "name": "Bean Scene",
+            "name": "Bean Scn",
             "location": "Ang Mo Kio",
             "description": "Trendy spot for coffee enthusiasts",
-            "logo": "bean_scene.png"
+            "logo": "bean_scn.png"
         },
         {
-            "name": "Mocha Madness",
+            "name": "Mocha Mad",
             "location": "Hougang",
             "description": "Chocolate lover's coffee paradise",
-            "logo": "mocha_madness.png"
+            "logo": "mocha_mad.png"
         },
         {
-            "name": "Drip & Sip",
+            "name": "Drip Sip",
             "location": "Woodlands",
             "description": "Minimalist cafe with pour-over focus",
-            "logo": "drip_and_sip.png"
+            "logo": "drip_sip.png"
         },
         {
-            "name": "The Daily Grind",
+            "name": "Daily Grd",
             "location": "Newton",
             "description": "No-frills coffee shop for regulars",
-            "logo": "daily_grind.png"
+            "logo": "daily_grd.png"
         },
         {
-            "name": "Aroma Alley",
+            "name": "Aroma Aly",
             "location": "Novena",
             "description": "Fragrant cafe with global coffee selection",
-            "logo": "aroma_alley.png"
+            "logo": "aroma_aly.png"
         },
         {
-            "name": "Brewed Awakening",
+            "name": "Brewed Aw",
             "location": "Bishan",
             "description": "Early bird's favorite coffee spot",
-            "logo": "brewed_awakening.png"
+            "logo": "brewed_aw.png"
         },
         {
-            "name": "Cappuccino Castle",
+            "name": "Cap Cstl",
             "location": "Ang Mo Kio",
             "description": "Regal setting for coffee connoisseurs",
-            "logo": "cappuccino_castle.png"
+            "logo": "cap_cstl.png"
         },
         {
-            "name": "Steamy Beans",
+            "name": "Stmy Bns",
             "location": "Hougang",
             "description": "Hip cafe with a steampunk vibe",
-            "logo": "steamy_beans.png"
+            "logo": "stmy_bns.png"
         },
         {
-            "name": "The Roasted Rooster",
+            "name": "Rstd Rstr",
             "location": "Woodlands",
             "description": "Farm-to-cup coffee experience",
-            "logo": "roasted_rooster.png"
+            "logo": "rstd_rstr.png"
         },
         {
-            "name": "Grind & Shine",
+            "name": "Grnd Shne",
             "location": "Newton",
             "description": "Bright and cheerful morning cafe",
-            "logo": "grind_and_shine.png"
+            "logo": "grnd_shne.png"
         },
         {
-            "name": "Espresso Yourself",
+            "name": "Esp Yslf",
             "location": "Novena",
             "description": "Artistic cafe with open mic nights",
-            "logo": "espresso_yourself.png"
+            "logo": "esp_yslf.png"
         },
         {
-            "name": "The Busy Bean",
+            "name": "Busy Bean",
             "location": "Bishan",
             "description": "Fast-paced cafe for on-the-go professionals",
             "logo": "busy_bean.png"
         },
         {
-            "name": "Café Serenity",
+            "name": "Caf Srnty",
             "location": "Ang Mo Kio",
             "description": "Zen-inspired peaceful coffee retreat",
-            "logo": "cafe_serenity.png"
+            "logo": "caf_srnty.png"
+        },
+        {
+            "name": "Cof Oasis",
+            "location": "Serangoon",
+            "description": "Desert-themed coffee shop",
+            "logo": "cof_oasis.png"
+        },
+        {
+            "name": "Brew Lab",
+            "location": "Tampines",
+            "description": "Experimental coffee brewing techniques",
+            "logo": "brew_lab.png"
+        },
+        {
+            "name": "Caf Nook",
+            "location": "Bedok",
+            "description": "Cozy corner for book lovers",
+            "logo": "caf_nook.png"
+        },
+        {
+            "name": "Bean Buzz",
+            "location": "Jurong",
+            "description": "Energetic cafe with a tech vibe",
+            "logo": "bean_buzz.png"
+        },
+        {
+            "name": "Cof Haven",
+            "location": "Clementi",
+            "description": "Tranquil escape for coffee lovers",
+            "logo": "cof_haven.png"
+        },
+        {
+            "name": "Grnd Gear",
+            "location": "Yishun",
+            "description": "Motorcycle-themed coffee shop",
+            "logo": "grnd_gear.png"
+        },
+        {
+            "name": "Perk Up",
+            "location": "Sengkang",
+            "description": "Cheerful cafe with colorful decor",
+            "logo": "perk_up.png"
+        },
+        {
+            "name": "Caf Zen",
+            "location": "Punggol",
+            "description": "Minimalist Japanese-inspired cafe",
+            "logo": "caf_zen.png"
+        },
+        {
+            "name": "Brew Bots",
+            "location": "Buona Vista",
+            "description": "Futuristic cafe with robot baristas",
+            "logo": "brew_bots.png"
+        },
+        {
+            "name": "Cof Cube",
+            "location": "Pasir Ris",
+            "description": "Geometric-themed modern coffee shop",
+            "logo": "cof_cube.png"
         }
     ],
     "employees": [
         {
-            "name": "John Smith",
+            "name": "John S",
             "gender": "Male",
-            "email": "john.smith@email.com",
+            "email": "john.s@email.com",
             "phone_number": "81234567"
         },
         {
-            "name": "Emma Johnson",
+            "name": "Emma J",
             "gender": "Female",
-            "email": "emma.johnson@email.com",
+            "email": "emma.j@email.com",
             "phone_number": "92345678"
         },
         {
-            "name": "Michael Brown",
+            "name": "Mike B",
             "gender": "Male",
-            "email": "michael.brown@email.com",
+            "email": "mike.b@email.com",
             "phone_number": "83456789"
         },
         {
-            "name": "Sophia Davis",
+            "name": "Sophia D",
             "gender": "Female",
-            "email": "sophia.davis@email.com",
+            "email": "sophia.d@email.com",
             "phone_number": "94567890"
         },
         {
-            "name": "William Wilson",
+            "name": "Will W",
             "gender": "Male",
-            "email": "william.wilson@email.com",
+            "email": "will.w@email.com",
             "phone_number": "85678901"
         },
         {
-            "name": "Olivia Taylor",
+            "name": "Olivia T",
             "gender": "Female",
-            "email": "olivia.taylor@email.com",
+            "email": "olivia.t@email.com",
             "phone_number": "96789012"
         },
         {
-            "name": "James Anderson",
+            "name": "James A",
             "gender": "Male",
-            "email": "james.anderson@email.com",
+            "email": "james.a@email.com",
             "phone_number": "87890123"
         },
         {
-            "name": "Ava Martinez",
+            "name": "Ava M",
             "gender": "Female",
-            "email": "ava.martinez@email.com",
+            "email": "ava.m@email.com",
             "phone_number": "98901234"
         },
         {
-            "name": "Alexander Thomas",
+            "name": "Alex T",
             "gender": "Male",
-            "email": "alexander.thomas@email.com",
+            "email": "alex.t@email.com",
             "phone_number": "89012345"
         },
         {
-            "name": "Mia Hernandez",
+            "name": "Mia H",
             "gender": "Female",
-            "email": "mia.hernandez@email.com",
+            "email": "mia.h@email.com",
             "phone_number": "90123456"
         },
         {
-            "name": "Ethan Moore",
+            "name": "Ethan M",
             "gender": "Male",
-            "email": "ethan.moore@email.com",
+            "email": "ethan.m@email.com",
             "phone_number": "81234568"
         },
         {
-            "name": "Isabella Clark",
+            "name": "Bella C",
             "gender": "Female",
-            "email": "isabella.clark@email.com",
+            "email": "bella.c@email.com",
             "phone_number": "92345679"
         },
         {
-            "name": "Daniel Lee",
+            "name": "Dan L",
             "gender": "Male",
-            "email": "daniel.lee@email.com",
+            "email": "dan.l@email.com",
             "phone_number": "83456780"
         },
         {
-            "name": "Charlotte Lewis",
+            "name": "Charlie L",
             "gender": "Female",
-            "email": "charlotte.lewis@email.com",
+            "email": "charlie.l@email.com",
             "phone_number": "94567891"
         },
         {
-            "name": "Matthew Walker",
+            "name": "Matt W",
             "gender": "Male",
-            "email": "matthew.walker@email.com",
+            "email": "matt.w@email.com",
             "phone_number": "85678902"
         },
         {
-            "name": "Amelia Hall",
+            "name": "Amelia H",
             "gender": "Female",
-            "email": "amelia.hall@email.com",
+            "email": "amelia.h@email.com",
             "phone_number": "96789013"
         },
         {
-            "name": "Joseph Young",
+            "name": "Joe Y",
             "gender": "Male",
-            "email": "joseph.young@email.com",
+            "email": "joe.y@email.com",
             "phone_number": "87890124"
         },
         {
-            "name": "Harper Allen",
+            "name": "Harper A",
             "gender": "Female",
-            "email": "harper.allen@email.com",
+            "email": "harper.a@email.com",
             "phone_number": "98901235"
         },
         {
-            "name": "Samuel King",
+            "name": "Sam K",
             "gender": "Male",
-            "email": "samuel.king@email.com",
+            "email": "sam.k@email.com",
             "phone_number": "89012346"
         },
         {
-            "name": "Evelyn Wright",
+            "name": "Eve W",
             "gender": "Female",
-            "email": "evelyn.wright@email.com",
+            "email": "eve.w@email.com",
             "phone_number": "90123457"
+        },
+        {
+            "name": "Leo R",
+            "gender": "Male",
+            "email": "leo.r@email.com",
+            "phone_number": "81234569"
+        },
+        {
+            "name": "Zoe P",
+            "gender": "Female",
+            "email": "zoe.p@email.com",
+            "phone_number": "92345680"
+        },
+        {
+            "name": "Noah G",
+            "gender": "Male",
+            "email": "noah.g@email.com",
+            "phone_number": "83456781"
+        },
+        {
+            "name": "Lily F",
+            "gender": "Female",
+            "email": "lily.f@email.com",
+            "phone_number": "94567892"
+        },
+        {
+            "name": "Oscar N",
+            "gender": "Male",
+            "email": "oscar.n@email.com",
+            "phone_number": "85678903"
+        },
+        {
+            "name": "Chloe B",
+            "gender": "Female",
+            "email": "chloe.b@email.com",
+            "phone_number": "96789014"
+        },
+        {
+            "name": "Hugo M",
+            "gender": "Male",
+            "email": "hugo.m@email.com",
+            "phone_number": "87890125"
+        },
+        {
+            "name": "Grace K",
+            "gender": "Female",
+            "email": "grace.k@email.com",
+            "phone_number": "98901236"
+        },
+        {
+            "name": "Felix J",
+            "gender": "Male",
+            "email": "felix.j@email.com",
+            "phone_number": "89012347"
+        },
+        {
+            "name": "Ruby S",
+            "gender": "Female",
+            "email": "ruby.s@email.com",
+            "phone_number": "90123458"
         }
     ]
 }

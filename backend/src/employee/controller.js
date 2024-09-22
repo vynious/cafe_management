@@ -48,7 +48,7 @@ export default class EmployeeController {
         try {
             const { employeeId } = req.body
             await this.employeeService.deleteEmployeeById(employeeId)
-            res.status(200).json()
+            res.status(204).send()
         } catch (error) {
             next(error)
         }

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { PrismaClient } from '@prisma/client';
+import { generateEmployeeId } from '../src/utils/id-gen.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const prisma = new PrismaClient();
@@ -37,7 +38,13 @@ async function main() {
         // seed employees
         if (seedData.employees) {
             for (const employee of seedData.employees) {
-                await prisma.employee.create({ data: employee });
+
+                await prisma.employee.create({
+                    data: {
+                        id: generateEmployeeId(),
+                        ...employee
+                    }
+                });
             }
             console.log('Employees seeded successfully');
         }
