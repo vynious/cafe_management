@@ -9,7 +9,7 @@ export default assignmentRouter;
 
 
 // // get assignment record by employee id
-// assignmentRouter.get('/assignments/employee/:employeeId', assignmentController.getEmployeeAssignment);
+assignmentRouter.get('/assignments/employee/:employeeId', assignmentController.getEmployeeAssignment);
 
 // // create a new assignment record
 // assignmentRouter.post('/assignments', assignmentController.createNewAssignment);

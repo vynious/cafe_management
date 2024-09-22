@@ -15,6 +15,9 @@ export default class EmployeeService {
     async getEmployeeById(employeeId) {
         return this.prisma_db.employee.findUnique({
             where: { id: employeeId },
+            include: {
+                cafes: true
+            }
         });
     }
 
