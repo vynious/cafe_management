@@ -5,7 +5,7 @@ import { ReusableTextbox } from '../Textbox'
 import type { CreateEmployeeFormData } from '../../types/Employee'
 import { useCafeData } from '../../hooks/useCafeData'
 import { GetCafeResponse } from '../../types/Cafe'
-import { emailValidation, maxLength10, minLength6, phoneNumberValidation } from '../../utils/validation'
+import { emailValidation, maxLength10, minLength6, phoneNumberValidation } from '../../utils/inputValidation'
 
 interface EmployeeFormProps extends FormProps<CreateEmployeeFormData, any, any> {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

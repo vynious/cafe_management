@@ -28,7 +28,7 @@ import { deleteEmployee } from '../../api/employeeApi'
 
 
 const GetEmployeeResponse: React.FC = React.memo(() => {
-  const { cafe: initialCafeName } = useSearch({ from: '/employees/' })
+  const {cafe : initialCafeName } = useSearch({ from: '/employees/' })
   const [cafeQuery, setCafeQuery] = useState(initialCafeName || '')
   const [searchTerm, setSearchTerm] = useState(initialCafeName || '')
   const [deleteConfirmation, setDeleteConfirmation] = useState({
@@ -62,9 +62,7 @@ const GetEmployeeResponse: React.FC = React.memo(() => {
   const confirmDelete = useCallback(async () => {
     if (deleteConfirmation.employeeId) {
       try {
-        console.log('Deleting employee:', deleteConfirmation.employeeId)
-        await deleteEmployee(deleteConfirmation.employeeId)
-        
+        await deleteEmployee(deleteConfirmation.employeeId)        
         // invalidate and refetch
         queryClient.invalidateQueries({ queryKey: ['employees', searchTerm] })
         window.location.reload()

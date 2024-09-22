@@ -15,11 +15,6 @@ interface EmployeeTableProps {
 
 
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onEditEmployee, onDeleteEmployee }) => {
-    const createTooltipRenderer = (field: keyof FlattenedGetEmployeeAssignmentResponse) => (params: any) => (
-        <Tooltip title={params.value}>
-            <span>{params.value}</span>
-        </Tooltip>
-    );
 
     const columnDefs: ColDef<FlattenedGetEmployeeAssignmentResponse>[] = [
         { field: 'employeeId', headerName: 'ID', width: 70, cellRenderer: TooltipCell },

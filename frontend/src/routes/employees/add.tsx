@@ -6,15 +6,7 @@ import { UnsavedChangesDialog } from '../../components/UnsavedChangesDialog';
 import { createFileRoute } from '@tanstack/react-router';
 import { createEmployee } from '../../api/employeeApi';
 import { CreateEmployeeRequest, FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
-
-const validate = (values: FlattenedGetEmployeeAssignmentResponse): FormErrors<FlattenedGetEmployeeAssignmentResponse> => {
-  const errors: FormErrors<FlattenedGetEmployeeAssignmentResponse> = {};
-  if (!values.employeeName) errors.employeeName = 'Required';
-  if (!values.employeeEmail) errors.employeeEmail = 'Required';
-  if (!values.employeeGender) errors.employeeGender = 'Required';
-  if (!values.employeePhoneNumber) errors.employeePhoneNumber = 'Required';
-  return errors;
-};
+import { validateEmployeeForm } from '../../utils/formValidation';
 
 interface AddEmployeeFormProps extends InjectedFormProps<FlattenedGetEmployeeAssignmentResponse> { }
 
@@ -68,7 +60,7 @@ const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ handleSubmit, submitt
 
 const AddEmployeeFormRedux = reduxForm<FlattenedGetEmployeeAssignmentResponse>({
   form: 'addEmployee',
-  validate
+  validate: validateEmployeeForm,
 })(AddEmployeeForm);
 
 const AddEmployeePage: React.FC = () => <AddEmployeeFormRedux />;

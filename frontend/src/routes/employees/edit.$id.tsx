@@ -7,16 +7,10 @@ import { getEmployeeAssignment, updateEmployee } from '../../api/employeeApi';
 import { createFileRoute } from '@tanstack/react-router';
 import { FlattenedGetEmployeeAssignmentResponse } from '../../types/Employee';
 import { flattenEmployeeData } from '../../utils/flatten';
+import { validateEmployeeForm } from '../../utils/formValidation';
 
 
-const validate = (values: FlattenedGetEmployeeAssignmentResponse): FormErrors<FlattenedGetEmployeeAssignmentResponse> => {
-  const errors: FormErrors<FlattenedGetEmployeeAssignmentResponse> = {};
-  if (!values.employeeName) errors.employeeName = 'Required';
-  if (!values.employeeEmail) errors.employeeEmail = 'Required';
-  if (!values.employeeGender) errors.employeeGender = 'Required';
-  if (!values.employeePhoneNumber) errors.employeePhoneNumber = 'Required';
-  return errors;
-};
+
 
 interface EditEmployeeFormProps extends InjectedFormProps<FlattenedGetEmployeeAssignmentResponse> { }
 
@@ -32,7 +26,6 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
         return;
       }
       try {
-        console.log(values)
         await updateEmployee(id, values);
         navigate({ to: '/employees' });
       } catch (error) {
@@ -72,7 +65,7 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
 };
 
 const EditEmployeeFormRedux = reduxForm<FlattenedGetEmployeeAssignmentResponse>({
-  validate,
+  validate: validateEmployeeForm,
   form: 'editEmployee',
   enableReinitialize: true,
   keepDirtyOnReinitialize: false,

@@ -41,13 +41,11 @@ const EmployeesLink: React.FC<{ cafe: GetCafeResponse }> = ({ cafe }) => (
 );
 
 const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe }) => {
-    console.log(data)
     const columnDefs: ColDef<GetCafeResponse>[] = [
         {
             field: 'logo',
             headerName: '',
             cellRenderer: (params: { data: GetCafeResponse }) => {
-                console.log('Logo value:', params.data.logo);
                 return (
                     <Tooltip title="Cafe Logo">
                         <img
