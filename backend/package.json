@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha src/**/*.js",
     "start": "nodemon src/index.js",
-    "seed": "node prisma/seed_db.js"
+    "seed": "node prisma/seed_db.js",
+    "deploy": "node prisma/seed_db.js; nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
