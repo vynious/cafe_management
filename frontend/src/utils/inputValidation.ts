@@ -8,7 +8,6 @@ export const emailValidation = (value: string) => {
     if (!value) {
         return 'Email is required';
     }
-
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(value) ? undefined : 'Invalid email address';
 };

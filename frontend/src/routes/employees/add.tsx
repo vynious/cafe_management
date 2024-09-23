@@ -29,7 +29,7 @@ const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ handleSubmit, submitt
       await createEmployee(createEmployeeRequest);
       navigate({ to: '/employees' });
     } catch (error) {
-      console.error('Failed to create employee:', error);
+      alert(`Failed to create employee: ${error}`,);
     }
   }, [navigate]);
 

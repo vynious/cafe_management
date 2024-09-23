@@ -24,10 +24,12 @@ const AddCafeForm: React.FC<AddCafeFormProps> = ({ handleSubmit, submitting }) =
   const [openModal, setOpenModal] = useState(false)
 
   const onSubmit = useCallback(async (values: CreateCafeRequest) => {
-    // Implement form submission logic (POST to API)
-    await createCafe(values)
-    console.log('Form submitted with values:', values);
-    navigate({ to: '/cafes' });
+    try {
+      await createCafe(values)
+      navigate({ to: '/cafes' });
+    } catch (error) {
+      alert(`Failed to create a new cafe: ${error}`)
+    }
   }, [navigate])
 
   const handleCancel = useCallback(() => setOpenModal(true), []);

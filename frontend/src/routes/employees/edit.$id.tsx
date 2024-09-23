@@ -10,8 +10,6 @@ import { flattenEmployeeData } from '../../utils/flatten';
 import { validateEmployeeForm } from '../../utils/formValidation';
 
 
-
-
 interface EditEmployeeFormProps extends InjectedFormProps<FlattenedGetEmployeeAssignmentResponse> { }
 
 const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
@@ -29,7 +27,7 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = (props) => {
         await updateEmployee(id, values);
         navigate({ to: '/employees' });
       } catch (error) {
-        console.error('Failed to update employee:', error);
+        alert(`Failed to update employee: ${error}`,);
       }
     },
     [id, navigate]
