@@ -15,13 +15,14 @@ A comprehensive full-stack solution for efficient cafe and employee management.
 ### Backend
 - Node.js with Express
 - Prisma (ORM)
+- _Refer to the [Backend](./backend/README.md)'s readme for more information_
 
 ### Database
 - MySQL
 
 ## Hosting
 
-This application is hosted on XX. Access the live version at [https://cafe-management-app.xx.com](https://cafe-management-app.xx.com).
+This application is hosted on Digital Ocean. Access the live version at [HERE](http://152.42.179.0/).
 
 ## Getting Started
 

@@ -16,7 +16,6 @@ This is the backend for the Cafe Management System, a project that manages cafes
 
 View `example.env` for the required .env variables
 Create a `.env` file in the `backend` directory with the following content:
-Adjust the `DATABASE_URL` and `FRONTEND_URL` if you're not using Docker or if you've changed the database credentials.
 
 ```bash
 DATABASE_URL="mysql://root:root@db:3306/cafedb"
@@ -26,8 +25,9 @@ FRONTEND_URL="http://localhost:5173"
 ## Running with Docker
 
 1. Make sure Docker and Docker Compose are installed on your system.
-2. Navigate to the project root directory (where the `docker-compose.yml` file is located).
-3. Run the following command to build and start the containers:
+2. Make sure you have set up the environment variables using the `.env` 
+3. Navigate to the project root directory (where the `docker-compose.yml` file is located).
+4. Run the following command to build and start the containers:
 
    ```
    docker-compose up --build
@@ -113,7 +113,6 @@ No specific endpoints defined in the provided `employee/route.js` file.
 
 - `/api/cafe_logos/*`: Serve cafe logo images
   - Falls back to a default logo if the requested logo is not found
-
 
 ## Database Seeding
 
