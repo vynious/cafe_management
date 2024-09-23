@@ -20,7 +20,7 @@ This application is hosted on Digital Ocean. **Access the live version at [HERE]
 ## Environment Setup
 
 ### Note
-- **I have included both `.env` files for both backend and frontend for ease of deployment and testing by other users.**
+- **I have included both `.env` files for both backend and frontend for ease of deployment and testing by other users. The following steps below for Environment Setup should be the apprioriate way of managing `.env`.**
 
 > **Important:**  I understand that this is not recommended and `.env` should not be uploaded onto Github, especially for production.
 
