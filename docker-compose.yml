@@ -6,8 +6,8 @@ services:
       dockerfile: docker/dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - DATABASE_URL=mysql://root:root@db:3306/cafedb
+    env_file:
+      - ./backend/.env
     depends_on:
       - db
     networks:
@@ -20,6 +20,8 @@ services:
       dockerfile: dockerfile
     ports:
       - "5173:5173"
+    env_file:
+      - ./frontend/.env
     depends_on:
       - backend
     networks:
@@ -28,9 +30,8 @@ services:
 
   db:
     image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: cafedb
+    env_file:
+      - ./backend/.env
     volumes:
       - db-data:/var/lib/mysql
     ports:
