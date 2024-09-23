@@ -68,7 +68,7 @@ app.use('/api/cafe_logos', (req, res, next) => {
 // error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).send('Internal Service Error. Please try again!');
 });
 
 // start server
