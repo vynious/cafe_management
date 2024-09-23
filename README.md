@@ -19,6 +19,14 @@ This application is hosted on Digital Ocean. **Access the live version at [HERE]
 
 ## Environment Setup
 
+### Note
+- **I have included both `.env` files for both backend and frontend for ease of deployment and testing by other users.**
+
+> **Important:**  I understand that this is not recommended and `.env` should not be uploaded onto Github, especially for production.
+
+
+---
+
 Create a `.env` file in both the `backend` and `frontend` directories with the following contents based on `example.env` for the required variables:
 
 **Backend `.env`:**
@@ -42,8 +50,9 @@ VITE_BACKEND_URL="http://localhost:3000"
 
 1. Ensure Docker and Docker Compose are installed.
 2. Set up the environment variables in the `.env` file.
-3. Navigate to the project root directory (where the `docker-compose.yml` file is located).
+3. Navigate to the project root directdory (where the `docker-compose.yml` file is located).
 4. Run the following command to build and start the containers:
+
 
    ```bash
    docker-compose up --build
