@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setting up the environment
 
-Currently, two official plugins are available:
+View `example.env` for the required .env variables and create a new one with your own defined variables for your environment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash 
+BACKEND_URL="http://localhost:3000"
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Running with Docker
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Make sure Docker and Docker Compose are installed on your system.
+2. Make sure you have set up the environment variables using the `.env` 
+3. Navigate to the project root directory (where the `docker-compose.yml` file is located).
+4. Run the following command to build and start the containers:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```
+   docker-compose up --build
+   ```
+
+4. The frontend will be available at `http://localhost:5173`.
+5. This step is the same as the backend as docker-compose will spin up the required services.
+
+
+## Running without Docker
+
+1. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+2. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+
+## Technologies Used
+
+- React.js + Vite + Typescript
+- Tanstack Query + Tanstack Router
+- Redux Form
+- Material UI
