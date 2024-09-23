@@ -7,6 +7,8 @@ import Table from '../shared/Table';
 import ActionButtons from '../shared/ActionButtons';
 import TooltipCell from '../shared/Tooltip';
 
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 interface CafeTableProps {
     data: GetCafeResponse[];
     onEditCafe: (cafe: GetCafeResponse) => void;
@@ -49,7 +51,7 @@ const CafeTable: React.FC<CafeTableProps> = ({ data, onEditCafe, onDeleteCafe })
                 return (
                     <Tooltip title="Cafe Logo">
                         <img
-                            src={`${import.meta.env.VITE_BACKEND_URL}/cafe_logos/${params.data.logo}`}
+                            src={`${VITE_BACKEND_URL}/api/cafe_logos/${params.data.logo}`}
                             alt="Cafe logo"
                             className="cafe-logo"
                             style={{ width: '40px', height: '40px', objectFit: 'contain' }}

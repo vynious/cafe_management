@@ -14,9 +14,8 @@ This is the backend for the Cafe Management System, a project that manages cafes
 
 ## Environment Setup
 
+View `example.env` for the required .env variables
 Create a `.env` file in the `backend` directory with the following content:
-
-
 Adjust the `DATABASE_URL` and `FRONTEND_URL` if you're not using Docker or if you've changed the database credentials.
 
 ```bash

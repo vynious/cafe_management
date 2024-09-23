@@ -20,8 +20,10 @@ export default class ManagementService {
             const result = await this.prisma_db.$transaction(async (transaction) => {
                 // Create a new employee
                 const newEmployee = await transaction.employee.create({
-                    id: generateEmployeeId(),
-                    data: newEmployeeData
+                    data: {
+                        id: generateEmployeeId(),
+                        ...newEmployeeData
+                    }
                 });
 
                 // Create a new assignment record
@@ -38,6 +40,7 @@ export default class ManagementService {
 
             return result;
         } catch (error) {
+            console.log(error)
             throw new Error('Failed to create employee and employment record');
         }
     }

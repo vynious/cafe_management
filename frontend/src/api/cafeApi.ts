@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GetCafeResponse, CreateCafeRequest, EditCafeRequest } from '../types/Cafe';
 
 
-export const API_URL = `${import.meta.env.VITE_BACKEND_URL}/cafe`;
+export const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/cafe`;
 
 // get all cafes
 export const getCafes = async (location?: string): Promise<GetCafeResponse[]> => {

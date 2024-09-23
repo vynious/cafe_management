@@ -31,10 +31,9 @@ const corsOptions = {
     optionsSuccessStatus: 204,
 };
 
-// Apply CORS before other middleware
 app.use(cors(corsOptions));
 
-// Helmet configuration
+// helmet configuration
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
@@ -49,25 +48,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"))
 
-
-app.get("/api", (req, res) => {
-    res.send("Hello World")
-})
-
-// mount routes
-app.use("/api", employeeRouter)
-app.use("/api", cafeRouter)
-app.use("/api", managementRouter)
-app.use("/api", assignmentRouter)
-
-// Log the current directory
-console.log('Current directory:', process.cwd());
-console.log('__dirname:', __dirname);
-
-// Check if the logos directory exists
-const logosPath = join(process.cwd(), 'public', 'cafe_logos');
-console.log('Logos path:', logosPath);
-console.log('Logos directory exists:', fs.existsSync(logosPath));
+// endpoints
+app.get("/api", (req, res) => res.send("Hello World"));
+app.use("/api", employeeRouter, cafeRouter, managementRouter, assignmentRouter);
 
 // serve static files
 app.use('/api/cafe_logos', express.static(join(process.cwd(), 'public', 'cafe_logos')));
@@ -75,15 +58,13 @@ app.use('/api/cafe_logos', express.static(join(process.cwd(), 'public', 'cafe_lo
 // fallback for logo requests
 app.use('/api/cafe_logos', (req, res, next) => {
     const defaultLogoPath = join(process.cwd(), 'public', 'cafe_logos', 'default.png');
-    console.log('Default logo path:', defaultLogoPath);
-    console.log('Default logo exists:', fs.existsSync(defaultLogoPath));
-
     if (fs.existsSync(defaultLogoPath)) {
         res.sendFile(defaultLogoPath);
     } else {
         res.status(404).send('Logo not found');
     }
 });
+
 // error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

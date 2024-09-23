@@ -25,9 +25,8 @@ export const getLogoFileName = (cafeName, fileExtension) => {
 export const uploadLogo = upload.single('logo');
 
 // currently this stores the file in the public/cafe_logos folder
-// Note: This approach is not scalable for large applications or distributed systems
-// as it relies on local file storage. 
-// we can consider using cloud storage solutions like AWS S3, Google Cloud Storage, etc.
+// Note: this approach is not scalable as it relies on local file storage. 
+// Future Improvement: using cloud storage solutions like AWS S3
 export const handleLogoUpload = (req, res, next) => {
     uploadLogo(req, res, async (err) => {
         if (err) {

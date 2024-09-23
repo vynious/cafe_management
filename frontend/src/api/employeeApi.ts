@@ -2,8 +2,8 @@ import axios from 'axios';
 import { GetEmployeeResponse, EmployeePersonalData, EditEmployeeRequest, GetEmployeeAssignmentResponse, CreateEmployeeRequest, FlattenedGetEmployeeAssignmentResponse } from '../types/Employee';
 
 
-export const EMPLOYEE_API_URL = `${import.meta.env.VITE_BACKEND_URL}/employee`;
-export const ASSIGNMENT_API_URL = `${import.meta.env.VITE_BACKEND_URL}/assignments`;
+export const EMPLOYEE_API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/employee`;
+export const ASSIGNMENT_API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/assignments`;
 
 export const getEmployees = async (cafe?: string): Promise<GetEmployeeAssignmentResponse[]> => {
     const params = cafe ? { cafe } : {}

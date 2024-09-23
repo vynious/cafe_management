@@ -18,8 +18,8 @@ export default class AssignmentController {
     async createNewAssignment(req, res, next) {
         try {
             const { cafeId, employeeId } = req.body;
-            const Assignment = await this.assignmentService.createAssignmentRecord(cafeId, employeeId);
-            res.json(Assignment);
+            const assignment = await this.assignmentService.createAssignmentRecord(cafeId, employeeId);
+            res.json(assignment);
         } catch (error) {
             next(error);
         }
@@ -27,8 +27,8 @@ export default class AssignmentController {
 
     async updateAssignment(req, res, next) {
         try {
-            const Assignment = await this.assignmentService.updateAssignment(req.params.id, req.body);
-            res.json(Assignment);
+            const assignment = await this.assignmentService.updateAssignment(req.params.id, req.body);
+            res.json(assignment);
         } catch (error) {
             next(error);
         }
@@ -37,8 +37,8 @@ export default class AssignmentController {
 
     async getEmployeeAssignment(req, res, next) {
         try {
-            const Assignment = await this.assignmentService.getAssignmentForEmployee(req.params.employeeId);
-            res.json(Assignment);
+            const assignment = await this.assignmentService.getAssignmentForEmployee(req.params.employeeId);
+            res.json(assignment);
         } catch (error) {
             next(error);
         }

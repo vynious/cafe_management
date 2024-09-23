@@ -1,6 +1,4 @@
-
 // validation on the backend for input sansitization
-
 export function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }

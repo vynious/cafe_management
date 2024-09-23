@@ -40,7 +40,7 @@ export default class CafeController {
         try {
             const { location, name, description } = req.body;
 
-            // Validation for required fields
+            // validation for required fields
             if (!location || !name || !description) {
                 return res.status(400).json({ error: 'Location, name, and description are required' });
             }
