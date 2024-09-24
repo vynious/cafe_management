@@ -11,7 +11,7 @@ This application is hosted on Digital Ocean. **Access the live version at [HERE]
 
 ![Entity Relationship Diagram](./backend/public/readme/erd.png)
 
-### Reason
+### 
 - Assignment is an associative entity between Employee and Cafe whereby Employee can possibly have more than 1 assignment. 
 - However to enforce the constraints that a single employee cannot be assigned to more than 1 cafe, the exposed endpoint on the backend limits the creation of the employee together with the assignment to their respective cafe. 
 - Subsequently we want to update the employee's assignment, we cannot put a NULL field and have to select an existing cafe.
